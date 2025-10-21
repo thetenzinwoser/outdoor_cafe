@@ -144,10 +144,113 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <title>Outdoor Café</title>
-        <meta name="description" content="Cozy outdoor café with aromatic coffee, refreshing smoothies, delicious boba tea, and flavorful Banh Mi" />
+        <title>Outdoor Café - Vietnamese Coffee & Café | Chicago & Evanston</title>
+        <meta name="description" content="Vietnamese café serving premium coffee, matcha lattes, boba tea, banh mi, and smoothies. Two locations in Chicago North Park and Evanston. Order online for pickup." />
+        <meta name="keywords" content="vietnamese coffee, cafe chicago, boba tea, matcha latte, banh mi, coffee shop evanston, outdoor cafe, north park cafe, vietnamese food" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="Outdoor Café" />
         <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="canonical" href="https://outdoorcafe.com" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://outdoorcafe.com" />
+        <meta property="og:title" content="Outdoor Café - Vietnamese Coffee & Café" />
+        <meta property="og:description" content="Vietnamese café serving premium coffee, matcha lattes, boba tea, banh mi, and smoothies. Two locations in Chicago & Evanston." />
+        <meta property="og:image" content="https://outdoorcafe.com/favicon.png" />
+        <meta property="og:site_name" content="Outdoor Café" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://outdoorcafe.com" />
+        <meta name="twitter:title" content="Outdoor Café - Vietnamese Coffee & Café" />
+        <meta name="twitter:description" content="Vietnamese café serving premium coffee, matcha lattes, boba tea, banh mi, and smoothies. Two locations in Chicago & Evanston." />
+        <meta name="twitter:image" content="https://outdoorcafe.com/favicon.png" />
+
+        {/* Additional SEO */}
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="English" />
+        <meta name="geo.region" content="US-IL" />
+        <meta name="geo.placename" content="Chicago, Evanston" />
+
+        {/* Organization Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Outdoor Café",
+              "url": "https://outdoorcafe.com",
+              "logo": "https://outdoorcafe.com/favicon.png",
+              "description": "Vietnamese café and coffeehouse with two locations in Chicago area",
+              "sameAs": [
+                "https://www.instagram.com/outdoorcafe"
+              ],
+              "location": [
+                {
+                  "@type": "CafeOrPub",
+                  "name": "Outdoor Café - North Park",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "3257 W Bryn Mawr Ave",
+                    "addressLocality": "Chicago",
+                    "addressRegion": "IL",
+                    "postalCode": "60659",
+                    "addressCountry": "US"
+                  },
+                  "telephone": "+17739427272",
+                  "openingHoursSpecification": [
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+                      "opens": "08:00",
+                      "closes": "20:00"
+                    },
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": ["Friday", "Saturday", "Sunday"],
+                      "opens": "08:00",
+                      "closes": "21:00"
+                    }
+                  ],
+                  "servesCuisine": ["Vietnamese", "Coffee", "Café"],
+                  "priceRange": "$$"
+                },
+                {
+                  "@type": "CafeOrPub",
+                  "name": "Outdoor Café - Evanston",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "2012 Central Street",
+                    "addressLocality": "Evanston",
+                    "addressRegion": "IL",
+                    "postalCode": "60201",
+                    "addressCountry": "US"
+                  },
+                  "telephone": "+18474250022",
+                  "openingHoursSpecification": [
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+                      "opens": "07:00",
+                      "closes": "19:00"
+                    },
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      "dayOfWeek": ["Friday", "Saturday"],
+                      "opens": "07:00",
+                      "closes": "21:00"
+                    }
+                  ],
+                  "servesCuisine": ["Vietnamese", "Coffee", "Café"],
+                  "priceRange": "$$"
+                }
+              ]
+            })
+          }}
+        />
       </head>
       <body className="bg-white text-gray-900 font-serif min-h-screen flex flex-col">
         <Navbar />

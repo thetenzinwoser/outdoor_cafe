@@ -59,6 +59,25 @@ export default function Contact() {
   useScrollAnimation();
 
   return (
+    <>
+      {/* Page Meta Tags */}
+      <title>Contact Us - Outdoor Café | Hours, Locations & Phone Numbers</title>
+      <meta name="description" content="Contact Outdoor Café. North Park Chicago: (773) 942-7272, Mon-Thu 8AM-8PM, Fri-Sun 8AM-9PM. Evanston: (847) 425-0022, Sun-Thu 7AM-7PM, Fri-Sat 7AM-9PM. Order online!" />
+      <meta name="keywords" content="contact outdoor cafe, cafe hours, chicago cafe phone, evanston cafe contact, coffee shop hours, order online" />
+      <link rel="canonical" href="https://outdoorcafe.com/contact" />
+
+      {/* Open Graph */}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://outdoorcafe.com/contact" />
+      <meta property="og:title" content="Contact Outdoor Café - Hours & Locations" />
+      <meta property="og:description" content="Two locations in Chicago North Park and Evanston. Call or order online for pickup!" />
+      <meta property="og:image" content="https://outdoorcafe.com/favicon.png" />
+
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content="Contact Outdoor Café" />
+      <meta name="twitter:description" content="Two locations in Chicago North Park and Evanston. Call or order online!" />
+
     <main className="w-full min-h-screen bg-cream">
       {/* Hero Section */}
       <section className="min-h-[60vh] flex items-center justify-center relative overflow-hidden">
@@ -287,5 +306,6 @@ export default function Contact() {
         </div>
       </section>
     </main>
+    </>
   );
 } 

@@ -2,312 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import GoogleReviewsMarquee from "../../components/GoogleReviewsMarquee";
-
-type MenuItem = {
-  id: string;
-  name: string;
-  price: string;
-  description: string;
-  image: string;
-  category: string;
-};
-
-const northParkMenu: MenuItem[] = [
-  // Matcha Specialties
-  {
-    id: "matcha-latte",
-    name: "Matcha Latte",
-    price: "$6.00",
-    description: "Premium matcha with milk (hot or iced)",
-    image: "/chowbus_menu/ohh_matcha/69_matcha latte (hot or iced).jpg",
-    category: "Matcha Specialties"
-  },
-  {
-    id: "matcha-milk-tea",
-    name: "Matcha Milk Tea",
-    price: "$6.25",
-    description: "Creamy matcha milk tea with your choice of toppings",
-    image: "/chowbus_menu/ohh_matcha/70_matcha milk tea.jpg",
-    category: "Matcha Specialties"
-  },
-  {
-    id: "strawberry-matcha-latte",
-    name: "Strawberry Matcha Latte",
-    price: "$6.50",
-    description: "Refreshing iced matcha with sweet strawberry blend",
-    image: "/chowbus_menu/ohh_matcha/71_strawberry matcha latte (iced).jpg",
-    category: "Matcha Specialties"
-  },
-  {
-    id: "matcha-milkshake",
-    name: "Matcha Milkshake",
-    price: "$6.75",
-    description: "Creamy matcha milkshake with premium ice cream",
-    image: "/chowbus_menu/milkshakes/75_matcha milkshake.jpg",
-    category: "Matcha Specialties"
-  },
-
-  // Coffee & Espresso
-  {
-    id: "double-espresso",
-    name: "Double Espresso",
-    price: "$3.50",
-    description: "Rich, bold double shot",
-    image: "/chowbus_menu/coffee_more/92_double espressos.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "americano",
-    name: "Americano",
-    price: "$3.25",
-    description: "Classic espresso with hot water",
-    image: "/chowbus_menu/coffee_more/93_americano.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "latte",
-    name: "Latte",
-    price: "$4.75",
-    description: "Smooth and creamy with art",
-    image: "/chowbus_menu/coffee_more/96_latte.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "house-blend",
-    name: "House Blend",
-    price: "$2.75",
-    description: "Dark roast mixed blend",
-    image: "/chowbus_menu/coffee_more/90_house blend.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "caramel-macchiato",
-    name: "Caramel Macchiato",
-    price: "$5.25",
-    description: "Espresso with vanilla and caramel drizzle",
-    image: "/chowbus_menu/coffee_more/102_caramel macchiato.jpg",
-    category: "Coffee & Espresso"
-  },
-
-  // Milk Tea & Boba
-  {
-    id: "signature-milk-tea",
-    name: "Signature Milk Tea",
-    price: "$5.50",
-    description: "Our signature blend with tapioca pearls",
-    image: "/chowbus_menu/milk_tea_boba/80_signature milk tea.jpg",
-    category: "Milk Tea & Boba"
-  },
-  {
-    id: "brown-sugar-milk-tea",
-    name: "Brown Sugar Milk Tea",
-    price: "$6.25",
-    description: "Rich brown sugar sweetened milk tea",
-    image: "/chowbus_menu/milk_tea_boba/81_brown sugar milk tea.jpg",
-    category: "Milk Tea & Boba"
-  },
-  {
-    id: "thai-iced-milk-tea",
-    name: "Thai Iced Milk Tea",
-    price: "$6.00",
-    description: "Sweet thai iced tea with choice of milks and toppings",
-    image: "/chowbus_menu/milk_tea_boba/108_thai iced milk tea.jpg",
-    category: "Milk Tea & Boba"
-  },
-  {
-    id: "taro-latte",
-    name: "Taro Latte",
-    price: "$5.75",
-    description: "Creamy taro with chewy boba",
-    image: "/chowbus_menu/favorite_x/82_taro latte.jpg",
-    category: "Milk Tea & Boba"
-  },
-
-  // Smoothies & Refreshers
-  {
-    id: "mango-matcha-smoothie",
-    name: "Mango Matcha Smoothie",
-    price: "$6.25",
-    description: "Mango and premium matcha blend",
-    image: "/chowbus_menu/smoothies_boba/73_mango matcha (smoothie).jpg",
-    category: "Smoothies & Refreshers"
-  },
-  {
-    id: "smoothies-boba-tea",
-    name: "Smoothies & Boba Tea",
-    price: "$6.50",
-    description: "Choose your favorite flavor with boba",
-    image: "/chowbus_menu/smoothies_boba/76_smoothies boba tea (choose your fav).jpg",
-    category: "Smoothies & Refreshers"
-  },
-  {
-    id: "milkshakes",
-    name: "Milkshakes",
-    price: "$6.75",
-    description: "Creamy milkshakes in various flavors",
-    image: "/chowbus_menu/milkshakes/115_milkshakes (choose your fav).jpg",
-    category: "Smoothies & Refreshers"
-  },
-
-  // Specialty Teas
-  {
-    id: "citron-tea",
-    name: "Citron (Yuja) Tea",
-    price: "$5.25",
-    description: "Traditional Korean citron tea, soothing and aromatic",
-    image: "/chowbus_menu/tea_more/106_citron (yuja) tea.jpg",
-    category: "Specialty Teas"
-  },
-  {
-    id: "mango-green-tea",
-    name: "Mango Green Tea",
-    price: "$5.50",
-    description: "Refreshing green tea with mango flavor",
-    image: "/chowbus_menu/tea_more/107_mango green tea.jpg",
-    category: "Specialty Teas"
-  },
-  {
-    id: "loose-leaf-tea",
-    name: "Loose Leaf Tea",
-    price: "$4.75",
-    description: "Choose your favorite premium loose leaf tea",
-    image: "/chowbus_menu/tea_more/105_loose leaf tea (choose your fav).jpg",
-    category: "Specialty Teas"
-  },
-
-  // Warm Beverages
-  {
-    id: "hot-cocoa",
-    name: "Hot Cocoa",
-    price: "$4.50",
-    description: "Rich hot chocolate with your choice of milks",
-    image: "/chowbus_menu/caffeine_free/113_hot cocoa.jpg",
-    category: "Warm Beverages"
-  },
-  {
-    id: "hot-white-cocoa",
-    name: "Hot White Cocoa",
-    price: "$4.75",
-    description: "Creamy white chocolate hot cocoa",
-    image: "/chowbus_menu/caffeine_free/114_hot white cocoa.jpg",
-    category: "Warm Beverages"
-  },
-
-  // Banh Mi Sandwiches
-  {
-    id: "roasted-chicken-banh-mi",
-    name: "Roasted Chicken Banh Mi",
-    price: "$8.75",
-    description: "Marinated roasted chicken with fresh herbs",
-    image: "/chowbus_menu/banh_mi_sandwich/119_roasted chicken banh mi.jpg",
-    category: "Banh Mi Sandwiches"
-  },
-  {
-    id: "veggie-tofu-banh-mi",
-    name: "Veggie Tofu Banh Mi",
-    price: "$8.00",
-    description: "Fresh tofu and vegetables with Vietnamese flavors",
-    image: "/chowbus_menu/banh_mi_sandwich/89_veggie tofu banh mi.jpg",
-    category: "Banh Mi Sandwiches"
-  },
-  {
-    id: "egg-ham-pate-banh-mi",
-    name: "Egg & Ham Banh Mi",
-    price: "$8.50",
-    description: "Egg and ham with pate and fresh vegetables",
-    image: "/chowbus_menu/banh_mi_sandwich/120_egg & ham_pate banh mi.jpg",
-    category: "Banh Mi Sandwiches"
-  },
-
-  // Panini & Grilled Sandwiches
-  {
-    id: "grilled-cheese-panini",
-    name: "Grilled Cheese Panini",
-    price: "$7.25",
-    description: "Classic grilled cheese with premium melted cheese",
-    image: "/chowbus_menu/panini_sandwich/121_grilled cheese panini.jpg",
-    category: "Panini & Grilled Sandwiches"
-  },
-  {
-    id: "hazelnut-heaven-panini",
-    name: "Hazelnut Heaven Panini",
-    price: "$8.50",
-    description: "Sweet hazelnut spread panini, perfect for dessert",
-    image: "/chowbus_menu/panini_sandwich/122_hazelnut heaven panini.jpg",
-    category: "Panini & Grilled Sandwiches"
-  },
-  {
-    id: "cheddar-ham-panini",
-    name: "Cheddar Ham Panini",
-    price: "$8.75",
-    description: "Savory ham and melted cheddar cheese panini",
-    image: "/chowbus_menu/panini_sandwich/123_cheddar ham panini.jpg",
-    category: "Panini & Grilled Sandwiches"
-  },
-
-  // Bagels & Breakfast
-  {
-    id: "toasted-bagel",
-    name: "Toasted Bagel",
-    price: "$3.50",
-    description: "Fresh toasted bagel with butter or cream cheese",
-    image: "/chowbus_menu/bagel_sandwich/116_toasted bagel.jpg",
-    category: "Bagels & Breakfast"
-  },
-  {
-    id: "egg-cheese-bagel",
-    name: "Egg & Cheese Bagel",
-    price: "$6.25",
-    description: "Scrambled eggs with melted cheese on toasted bagel",
-    image: "/chowbus_menu/bagel_sandwich/117_egg & cheese bagel.jpg",
-    category: "Bagels & Breakfast"
-  },
-  {
-    id: "egg-ham-cheese-bagel",
-    name: "Egg, Ham & Cheese Bagel",
-    price: "$7.50",
-    description: "Complete breakfast bagel with egg, ham, and cheese",
-    image: "/chowbus_menu/bagel_sandwich/87_egg_ham & cheese bagel.jpg",
-    category: "Bagels & Breakfast"
-  },
-
-  // Desserts
-  {
-    id: "new-york-cheesecake",
-    name: "New York Cheesecake",
-    price: "$5.95",
-    description: "Classic rich and creamy New York style cheesecake",
-    image: "/chowbus_menu/dessert/126_new york cheesecake.jpg",
-    category: "Desserts"
-  },
-  {
-    id: "tiramisu",
-    name: "Tiramisu",
-    price: "$6.25",
-    description: "Traditional Italian coffee-flavored dessert",
-    image: "/chowbus_menu/dessert/127_tiramisu.jpg",
-    category: "Desserts"
-  },
-  {
-    id: "bingsoo-korean-shaved-ice",
-    name: "Bingsoo Korean Shaved Ice",
-    price: "$8.50",
-    description: "Korean shaved ice dessert with various toppings",
-    image: "/chowbus_menu/dessert/125_bingsoo korean shaved ice.jpg",
-    category: "Desserts"
-  },
-
-  // Hot Noodles
-  {
-    id: "shin-ramyun-spicy-noodles",
-    name: "Shin Ramyun Spicy Noodles Soup",
-    price: "$9.25",
-    description: "Korean spicy instant noodle soup",
-    image: "/chowbus_menu/noodles/88_shin ramyun spicy noodles soup.jpg",
-    category: "Hot Noodles"
-  }
-];
 
 export default function NorthParkMenuPage() {
   const [isOpen, setIsOpen] = useState(true);
@@ -316,48 +10,262 @@ export default function NorthParkMenuPage() {
     const checkIfOpen = () => {
       const now = new Date();
       const cstTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Chicago" }));
-      const day = cstTime.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+      const day = cstTime.getDay();
       const hour = cstTime.getHours();
 
-      // Mon-Thu: 8AM-8PM (1-4), Fri-Sun: 8AM-9PM (5,6,0)
       if (day >= 1 && day <= 4) {
-        // Monday to Thursday: 8AM-8PM
         setIsOpen(hour >= 8 && hour < 20);
       } else {
-        // Friday, Saturday, Sunday: 8AM-9PM
         setIsOpen(hour >= 8 && hour < 21);
       }
     };
 
     checkIfOpen();
-    const interval = setInterval(checkIfOpen, 60000); // Check every minute
+    const interval = setInterval(checkIfOpen, 60000);
     return () => clearInterval(interval);
   }, []);
 
-  const categories = [
-    { id: "Matcha Specialties", label: "Matcha Specialties", emoji: "🍵", image: "/chowbus_menu_north_park_enhanced/ohh_matcha/69_matcha latte (hot or iced).jpg" },
-    { id: "Coffee & Espresso", label: "Coffee & Espresso", emoji: "☕", image: "/chowbus_menu_north_park_enhanced/coffee_more/96_latte.jpg" },
-    { id: "Milk Tea & Boba", label: "Milk Tea & Boba", emoji: "🧋", image: "/chowbus_menu_north_park_enhanced/milk_tea_boba/80_signature milk tea.jpg" },
-    { id: "Smoothies & Refreshers", label: "Smoothies & Refreshers", emoji: "🥤", image: "/chowbus_menu_north_park_enhanced/smoothies_boba/73_mango matcha (smoothie).jpg" },
-    { id: "Specialty Teas", label: "Specialty Teas", emoji: "🍃", image: "/chowbus_menu_north_park_enhanced/tea_more/106_citron (yuja) tea.jpg" },
-    { id: "Warm Beverages", label: "Warm Beverages", emoji: "☕", image: "/chowbus_menu_north_park_enhanced/caffeine_free/113_hot cocoa.jpg" },
-    { id: "Banh Mi Sandwiches", label: "Banh Mi Sandwiches", emoji: "🥖", image: "/chowbus_menu_north_park_enhanced/banh_mi_sandwich/119_roasted chicken banh mi.jpg" },
-    { id: "Panini & Grilled Sandwiches", label: "Panini & Grilled", emoji: "🥪", image: "/chowbus_menu_north_park_enhanced/panini_sandwich/121_grilled cheese panini.jpg" },
-    { id: "Bagels & Breakfast", label: "Bagels & Breakfast", emoji: "🥯", image: "/chowbus_menu_north_park_enhanced/bagel_sandwich/116_toasted bagel.jpg" },
-    { id: "Desserts", label: "Desserts", emoji: "🍰", image: "/chowbus_menu_north_park_enhanced/dessert/126_new york cheesecake.jpg" },
-    { id: "Hot Noodles", label: "Hot Noodles", emoji: "🍜", image: "/chowbus_menu_north_park_enhanced/noodles/88_shin ramyun spicy noodles soup.jpg" },
+  const menuSections = [
+    {
+      id: "coffee-more",
+      title: "Coffee and More",
+      items: [
+        "Coffee",
+        "Iced Coffee",
+        "Espresso",
+        "Americano",
+        "Cortado",
+        "Latte",
+        "Cappuccino",
+        "Mocha",
+        "Chai",
+        "Caramel Latte",
+        "Raspberry Mocha",
+        "Mocha Chai",
+        "Hot Cocoa",
+        "Vietnamese Iced Black Coffee",
+        "Vietnamese Iced Milk Coffee (Cà Phê Sữa Đá)",
+        "Cafe Soda (Cà Phê Soda)",
+        "Vietnamese Drip Coffee (Cà Phê Phin)",
+        "Taro Latte",
+        "Mint Frappe",
+        "Mocha Frappe",
+        "Caramel Frappe"
+      ]
+    },
+    {
+      id: "specialty-drinks",
+      title: "Specialty Drinks",
+      items: [
+        "Vietnamese Iced Milk Coffee (Cà Phê Sữa Đá)",
+        "Matcha Latte",
+        "Strawberry Matcha Latte",
+        "Thai Iced Milk Tea",
+        "Taro Latte",
+        "Passion Fruit Green Tea",
+        "Strawberry Hibiscus Tea",
+        "Strawberry Kiwi Green Tea",
+        "Signature Milk Tea",
+        "Brown Sugar Milk Tea",
+        "Choco Tiger Milk Tea",
+        "Honey Ginger Tea"
+      ]
+    },
+    {
+      id: "matcha-specialty",
+      title: "Matcha Specialty",
+      items: [
+        "Matcha Latte",
+        "Mango Matcha Latte",
+        "Strawberry Matcha Latte",
+        "Matcha Milk Tea",
+        "Mango Matcha Smoothie",
+        "Matcha Smoothie",
+        "Matcha Frappe"
+      ]
+    },
+    {
+      id: "tea-more",
+      title: "Tea and More",
+      items: [
+        "Honey Ginger Tea",
+        "Citron Tea",
+        "Mango Green Tea",
+        "Coconut Green Tea",
+        "Passion Fruit Green Tea",
+        "Strawberry Hibiscus Tea",
+        "Strawberry Kiwi Green Tea",
+        "Peach Black Tea",
+        "Jasmine Green Tea",
+        "Peppermint Tea",
+        "Hibiscus Tea",
+        "Madame Butterfly Tea",
+        "Black Tea"
+      ]
+    },
+    {
+      id: "milk-tea",
+      title: "Milk Tea (Hot or Iced)",
+      items: [
+        "Brown Sugar Milk Tea",
+        "Chai Milk Tea",
+        "Choco Tiger Milk Tea",
+        "Classic Milk Tea",
+        "Coffee Milk Tea",
+        "Coconut Milk Tea",
+        "Earl Grey Milk Tea",
+        "Honeydew Milk Tea",
+        "Jasmine Milk Tea",
+        "Mango Milk Tea",
+        "Matcha Milk Tea",
+        "Signature Milk Tea",
+        "Strawberry Milk Tea",
+        "Taro Milk Tea",
+        "Thai Milk Tea"
+      ]
+    },
+    {
+      id: "smoothies",
+      title: "Smoothies (Choose up to two flavors)",
+      items: [
+        "Mango",
+        "Strawberry",
+        "Avocado",
+        "Banana",
+        "Kiwi",
+        "Pineapple",
+        "Red Bean",
+        "Vanilla",
+        "Honeydew",
+        "Taro"
+      ]
+    },
+    {
+      id: "milkshakes",
+      title: "Milkshakes",
+      items: [
+        "Banana",
+        "Chocolate",
+        "Espresso",
+        "Chocolate Banana",
+        "Cookies and Cream",
+        "Mango",
+        "Matcha Green Tea",
+        "Vanilla",
+        "Strawberry",
+        "Mint Chip"
+      ]
+    },
+    {
+      id: "breakfast",
+      title: "Breakfast Sandwiches",
+      items: [
+        "Toasted Bagel - Plain or Everything",
+        "Egg and Cheese",
+        "Egg, Ham and Cheese",
+        "Lox",
+        "Nutella Banana Crunch"
+      ]
+    },
+    {
+      id: "banh-mi",
+      title: "Banh Mi",
+      items: [
+        "Classic Ham and Pork Pâté",
+        "Veggie Tofu",
+        "Roasted Chicken",
+        "Grilled Pork Sausage"
+      ]
+    },
+    {
+      id: "panini",
+      title: "Panini",
+      items: [
+        "Grilled Cheese",
+        "Hazelnut Nutella",
+        "Cheddar Ham",
+        "Turkey Provolone"
+      ]
+    },
+    {
+      id: "other-food",
+      title: "Other Food",
+      items: [
+        "Savory Salad",
+        "Shrimp Ramen",
+        "Spicy Noodle Soup",
+        "Chicken Pho - Seasonal (Grab and Go)"
+      ]
+    }
   ];
 
-  // Group items by category
-  const groupedMenu = categories.map(category => ({
-    ...category,
-    items: northParkMenu.filter(item => item.category === category.id)
-  })).filter(group => group.items.length > 0);
   return (
+    <>
+      {/* Page Meta Tags */}
+      <title>North Park Menu - Outdoor Café | Vietnamese Coffee & Milkshakes</title>
+      <meta name="description" content="North Park Chicago Outdoor Café menu with Vietnamese coffee, matcha, boba tea, milkshakes, banh mi, and pho. Open 8AM-8PM Mon-Thu, 8AM-9PM Fri-Sun. Order online!" />
+      <meta name="keywords" content="north park cafe, vietnamese coffee chicago, boba tea chicago, matcha latte, banh mi chicago, milkshakes, pho, bryn mawr cafe" />
+      <link rel="canonical" href="https://outdoorcafe.com/locations/chicago" />
+
+      {/* Open Graph */}
+      <meta property="og:type" content="restaurant" />
+      <meta property="og:url" content="https://outdoorcafe.com/locations/chicago" />
+      <meta property="og:title" content="North Park Location - Outdoor Café Menu" />
+      <meta property="og:description" content="Vietnamese coffee, matcha lattes, boba tea, milkshakes, and authentic banh mi at our North Park Chicago location. 3257 W Bryn Mawr Ave." />
+      <meta property="og:image" content="https://outdoorcafe.com/favicon.png" />
+
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="North Park Location - Outdoor Café Menu" />
+      <meta name="twitter:description" content="Vietnamese coffee, matcha lattes, boba tea, milkshakes, and banh mi in North Park Chicago." />
+
+      {/* Local Business */}
+      <meta name="geo.position" content="41.9834;-87.7176" />
+      <meta name="geo.placename" content="North Park, Chicago, Illinois" />
+      <meta name="geo.region" content="US-IL" />
+
+      {/* Restaurant Structured Data for North Park */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Outdoor Café - North Park",
+            "image": "https://outdoorcafe.com/favicon.png",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "3257 W Bryn Mawr Ave",
+              "addressLocality": "Chicago",
+              "addressRegion": "IL",
+              "postalCode": "60659",
+              "addressCountry": "US"
+            },
+            "telephone": "+17739427272",
+            "url": "https://outdoorcafe.com/locations/chicago",
+            "servesCuisine": ["Vietnamese", "Coffee", "Café", "Boba Tea"],
+            "priceRange": "$$",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+                "opens": "08:00",
+                "closes": "20:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Friday", "Saturday", "Sunday"],
+                "opens": "08:00",
+                "closes": "21:00"
+              }
+            ],
+            "hasMenu": "https://outdoorcafe.com/locations/chicago"
+          })
+        }}
+      />
     <main className="w-full min-h-screen bg-cream">
       {/* Header & Order Online Section */}
       <section className="py-12 sm:py-16 bg-warm-light relative overflow-hidden">
-        {/* Floating background elements */}
         <div className="absolute top-10 left-10 w-2 h-2 bg-accent-solid/20 rounded-full animate-float"></div>
         <div className="absolute bottom-12 right-16 w-1.5 h-1.5 bg-accent-solid/30 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
 
@@ -410,51 +318,56 @@ export default function NorthParkMenuPage() {
       </section>
 
       {/* Menu Section */}
-      <section className="py-10 sm:py-12 bg-warm-light">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8">
-          <div className="text-center mb-8 sm:mb-10">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light mb-4 text-warm-dark text-balance">
-              Full Menu
-            </h2>
-            <div className="w-16 h-1 bg-sage mx-auto rounded-full"></div>
+      <section className="py-12 sm:py-16 bg-cream">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-light text-warm-dark">Menu</h2>
+            <div className="w-16 h-1 bg-sage mx-auto rounded-full mt-4"></div>
           </div>
+          <div className="text-center space-y-12">
+            {menuSections.map((section) => (
+              <div key={section.id} className="space-y-4">
+                {/* Category Header */}
+                <h3 className="text-base font-semibold text-gray-900">
+                  {section.title}
+                </h3>
 
-          {/* Menu Grid - Masonry layout on desktop, single column on mobile */}
-          <div className="columns-1 lg:columns-2 gap-8 lg:gap-12">
-            {groupedMenu.map((group) => (
-              <div key={group.id} className="bg-white rounded-2xl shadow-warm overflow-hidden mb-8 lg:mb-12 break-inside-avoid">
-                {/* Category Header with Image */}
-                <div className="relative overflow-hidden">
-                  <div className="h-48 sm:h-56 md:h-64 overflow-hidden">
-                    <img
-                      src={group.image}
-                      alt={group.label}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                    <h3 className="text-2xl sm:text-3xl font-light text-white">
-                      {group.label}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Menu Items */}
-                <div className="p-4 sm:p-6 space-y-3">
-                  {group.items.map((item) => (
-                    <div key={item.id} className="border-b border-gray-100 last:border-0 pb-3 last:pb-0">
-                      <h4 className="text-base font-medium text-gray-900 mb-1">{item.name}</h4>
-                      <p className="text-gray-600 text-sm leading-snug">{item.description}</p>
-                    </div>
+                {/* Menu Items - Pipe Separated */}
+                <p className="text-gray-800 text-base leading-relaxed">
+                  {section.items.map((item, index) => (
+                    <span key={index}>
+                      {item}
+                      {index < section.items.length - 1 && ' | '}
+                    </span>
                   ))}
-                </div>
+                </p>
               </div>
             ))}
+
+            {/* Pastries Section */}
+            <div className="space-y-4">
+              <h3 className="text-base font-semibold text-gray-900">
+                Pastries
+              </h3>
+              <p className="text-gray-800 text-base leading-relaxed">
+                Fresh pastries from local bakery (Dokil Bakery)
+              </p>
+            </div>
+
+            {/* Catering Info */}
+            <div className="pt-6 space-y-3 text-gray-700 border-t border-gray-300">
+              <h4 className="text-lg font-semibold text-gray-900">Catering Available</h4>
+              <p className="text-sm">
+                We offer catering options including Spring Rolls, Egg Rolls, and Banh Mi trays.
+              </p>
+              <p className="text-sm">
+                Requires 24 hours advance notice. Please contact your nearest location to discuss catering.
+              </p>
+            </div>
           </div>
         </div>
       </section>
-
     </main>
+    </>
   );
 }

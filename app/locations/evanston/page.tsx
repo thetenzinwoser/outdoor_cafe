@@ -2,388 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import GoogleReviewsMarquee from "../../components/GoogleReviewsMarquee";
-
-type MenuItem = {
-  id: string;
-  name: string;
-  price: string;
-  description: string;
-  image: string;
-  category: string;
-};
-
-const evanstonMenu: MenuItem[] = [
-  // Matcha Specialties
-  {
-    id: "matcha-latte",
-    name: "Matcha Latte",
-    price: "$6.00",
-    description: "Premium matcha with milk (hot or iced)",
-    image: "/chowbus_menu_evanston/matcha_specialties/002_matcha_latte_hot_or_iced.jpg",
-    category: "Matcha Specialties"
-  },
-  {
-    id: "matcha-milk-tea",
-    name: "Matcha Milk Tea",
-    price: "$6.25",
-    description: "Creamy matcha milk tea (hot or iced)",
-    image: "/chowbus_menu_evanston/matcha_specialties/010_matcha_milk_tea_hot_or_iced.jpg",
-    category: "Matcha Specialties"
-  },
-  {
-    id: "strawberry-matcha-latte",
-    name: "Strawberry Matcha Latte",
-    price: "$6.50",
-    description: "Refreshing iced matcha with sweet strawberry blend",
-    image: "/chowbus_menu_evanston/matcha_specialties/005_strawberry_matcha_latte_iced.jpg",
-    category: "Matcha Specialties"
-  },
-  {
-    id: "mango-matcha-latte",
-    name: "Mango Matcha Latte",
-    price: "$6.50",
-    description: "Tropical mango with premium matcha (iced)",
-    image: "/chowbus_menu_evanston/matcha_specialties/012_mango_matcha_latte_iced.jpg",
-    category: "Matcha Specialties"
-  },
-  {
-    id: "mango-matcha-smoothie",
-    name: "Mango Matcha Smoothie",
-    price: "$6.75",
-    description: "Mango mixed with matcha ice cream and powder",
-    image: "/chowbus_menu_evanston/matcha_specialties/013_mango_matcha_smoothie.jpg",
-    category: "Matcha Specialties"
-  },
-  {
-    id: "matcha-frappe",
-    name: "Matcha Frappe",
-    price: "$6.50",
-    description: "Blended iced matcha frappe with whipped cream",
-    image: "/chowbus_menu_evanston/matcha_specialties/014_matcha_frappe.jpg",
-    category: "Matcha Specialties"
-  },
-
-  // Coffee & Espresso
-  {
-    id: "house-blend",
-    name: "House Blend",
-    price: "$2.75",
-    description: "Dark roast mixed blend coffee",
-    image: "/chowbus_menu_evanston/coffee_espresso/037_house_blend.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "iced-coffee",
-    name: "Iced Coffee",
-    price: "$3.25",
-    description: "Refreshing iced coffee with your choice of milks",
-    image: "/chowbus_menu_evanston/coffee_espresso/038_iced_coffee.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "doppio",
-    name: "Doppio (Double Espresso)",
-    price: "$3.50",
-    description: "Rich, bold double shot espresso",
-    image: "/chowbus_menu_evanston/coffee_espresso/039_doppio_double_espressos.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "americano",
-    name: "Americano",
-    price: "$3.25",
-    description: "Classic espresso with hot water",
-    image: "/chowbus_menu_evanston/coffee_espresso/040_americano.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "cortado",
-    name: "Cortado",
-    price: "$4.25",
-    description: "Equal parts espresso and warm steamed milk",
-    image: "/chowbus_menu_evanston/coffee_espresso/041_cortado.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "vietnamese-iced-black-coffee",
-    name: "Vietnamese Iced Black Coffee",
-    price: "$4.50",
-    description: "Strong Vietnamese coffee served over ice",
-    image: "/chowbus_menu_evanston/coffee_espresso/042_vietnamese_iced_black_coffee.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "vietnamese-iced-milk-coffee",
-    name: "Vietnamese Iced Milk Coffee (Cafe Sua Da)",
-    price: "$5.25",
-    description: "Vietnamese coffee with condensed milk over ice",
-    image: "/chowbus_menu_evanston/coffee_espresso/004_vietnamese_iced_milk_coffee_cafe_sua_da.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "chai-latte",
-    name: "Chai Latte",
-    price: "$4.75",
-    description: "Spiced chai tea with steamed milk",
-    image: "/chowbus_menu_evanston/coffee_espresso/043_chai_latte.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "taro-latte",
-    name: "Taro Latte",
-    price: "$5.75",
-    description: "Creamy taro with your choice of milks",
-    image: "/chowbus_menu_evanston/coffee_espresso/044_taro_latte.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "latte",
-    name: "Latte",
-    price: "$4.75",
-    description: "Smooth espresso with steamed milk",
-    image: "/chowbus_menu_evanston/coffee_espresso/045_latte_choose_your_fav.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "pumpkin-spice-latte",
-    name: "Pumpkin Spice Latte (Seasonal)",
-    price: "$6.50",
-    description: "Fall seasonal latte with pumpkin spice flavors",
-    image: "/chowbus_menu_evanston/coffee_espresso/046_pumpkin_spice_latte_seasonal.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "peppermint-mocha-latte",
-    name: "Peppermint Mocha Latte (Seasonal)",
-    price: "$6.50",
-    description: "Holiday seasonal mocha with peppermint",
-    image: "/chowbus_menu_evanston/coffee_espresso/047_peppermint_mocha_latte_seasonal.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "caramel-macchiato",
-    name: "Caramel Macchiato",
-    price: "$5.25",
-    description: "Espresso with vanilla and caramel drizzle",
-    image: "/chowbus_menu_evanston/coffee_espresso/048_caramel_macchiato.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "iced-hazelnut-oat-milk-shaken-espresso",
-    name: "Iced Hazelnut Oat Milk Shaken Espresso",
-    price: "$5.75",
-    description: "Shaken espresso with hazelnut and oat milk",
-    image: "/chowbus_menu_evanston/coffee_espresso/050_iced_hazelnut_oat_milk_shaken_espresso.jpg",
-    category: "Coffee & Espresso"
-  },
-  {
-    id: "frappe",
-    name: "Frappe",
-    price: "$6.95",
-    description: "Blended iced coffee frappe with whipped cream",
-    image: "/chowbus_menu_evanston/coffee_espresso/051_frappe.jpg",
-    category: "Coffee & Espresso"
-  },
-
-  // Milk Tea & Boba
-  {
-    id: "signature-milk-tea",
-    name: "Signature Milk Tea",
-    price: "$5.50",
-    description: "Our signature blend with tapioca pearls",
-    image: "/chowbus_menu_evanston/milk_tea_boba/007_signature_milk_tea.jpg",
-    category: "Milk Tea & Boba"
-  },
-  {
-    id: "milk-tea",
-    name: "Milk Tea",
-    price: "$5.25",
-    description: "Choose your favorite flavor with milk and toppings",
-    image: "/chowbus_menu_evanston/milk_tea_boba/025_milk_tea_choose_your_fav.jpg",
-    category: "Milk Tea & Boba"
-  },
-  {
-    id: "strawberry-milk-tea",
-    name: "Strawberry Milk Tea",
-    price: "$5.75",
-    description: "Sweet strawberry flavored milk tea",
-    image: "/chowbus_menu_evanston/milk_tea_boba/006_strawberry_milk_tea.jpg",
-    category: "Milk Tea & Boba"
-  },
-  {
-    id: "brown-sugar-milk-tea",
-    name: "Brown Sugar Milk Tea",
-    price: "$6.25",
-    description: "Rich brown sugar sweetened milk tea",
-    image: "/chowbus_menu_evanston/milk_tea_boba/028_brown_sugar_milk_tea.jpg",
-    category: "Milk Tea & Boba"
-  },
-  {
-    id: "thai-iced-milk-tea",
-    name: "Thai Iced Milk Tea",
-    price: "$6.00",
-    description: "Sweet Thai tea with milk and choice of toppings",
-    image: "/chowbus_menu_evanston/milk_tea_boba/003_thai_iced_milk_tea.jpg",
-    category: "Milk Tea & Boba"
-  },
-
-  // Specialty Teas
-  {
-    id: "loose-leaf-tea",
-    name: "Loose Leaf Tea",
-    price: "$4.75",
-    description: "Choose your favorite premium loose leaf tea",
-    image: "/chowbus_menu_evanston/specialty_teas/030_loose_leaf_tea_choose_your_fav.jpg",
-    category: "Specialty Teas"
-  },
-  {
-    id: "mango-green-tea",
-    name: "Mango Green Tea (Iced)",
-    price: "$5.50",
-    description: "Refreshing green tea with mango flavor",
-    image: "/chowbus_menu_evanston/specialty_teas/031_mango_green_tea_iced.jpg",
-    category: "Specialty Teas"
-  },
-  {
-    id: "honey-ginger-tea",
-    name: "Honey Ginger Tea",
-    price: "$5.25",
-    description: "Soothing ginger tea with honey (hot or iced)",
-    image: "/chowbus_menu_evanston/specialty_teas/033_honey_ginger_tea_hot_or_iced.jpg",
-    category: "Specialty Teas"
-  },
-  {
-    id: "passion-fruit-green-tea",
-    name: "Passion Fruit Green Tea (Iced)",
-    price: "$5.50",
-    description: "Tropical passion fruit with green tea",
-    image: "/chowbus_menu_evanston/specialty_teas/034_passion_fruit_green_tea_iced.jpg",
-    category: "Specialty Teas"
-  },
-  {
-    id: "strawberry-hibiscus-tea",
-    name: "Strawberry Hibiscus Tea",
-    price: "$5.25",
-    description: "Floral hibiscus with strawberry (hot or iced)",
-    image: "/chowbus_menu_evanston/specialty_teas/035_strawberry_hibiscus_tea_hot_or_iced.jpg",
-    category: "Specialty Teas"
-  },
-  {
-    id: "strawberry-kiwi-green-tea",
-    name: "Strawberry Kiwi Green Tea (Iced)",
-    price: "$5.50",
-    description: "Refreshing green tea with strawberry and kiwi",
-    image: "/chowbus_menu_evanston/specialty_teas/036_strawberry_kiwi_green_tea_iced.jpg",
-    category: "Specialty Teas"
-  },
-
-  // Smoothies & Drinks
-  {
-    id: "smoothies-boba-tea",
-    name: "Smoothies / Boba Tea",
-    price: "$6.50",
-    description: "Choose up to 2 flavors with ice blended and toppings",
-    image: "/chowbus_menu_evanston/smoothies_drinks/023_smoothies__boba_tea_choose_up_to_2_flavors.jpg",
-    category: "Smoothies & Drinks"
-  },
-  {
-    id: "strawberry-fresh-milk",
-    name: "Strawberry Fresh Milk",
-    price: "$5.75",
-    description: "Fresh strawberry with creamy milk",
-    image: "/chowbus_menu_evanston/smoothies_drinks/026_strawberry_fresh_milk.jpg",
-    category: "Smoothies & Drinks"
-  },
-
-  // Hot Beverages
-  {
-    id: "hot-cocoa",
-    name: "Hot Cocoa",
-    price: "$4.50",
-    description: "Rich hot chocolate with your choice of milks",
-    image: "/chowbus_menu_evanston/hot_beverages/052_hot_cocoa.jpg",
-    category: "Hot Beverages"
-  },
-  {
-    id: "hot-white-cocoa",
-    name: "Hot White Cocoa",
-    price: "$4.75",
-    description: "Creamy white chocolate hot cocoa",
-    image: "/chowbus_menu_evanston/hot_beverages/053_hot_white_cocoa.jpg",
-    category: "Hot Beverages"
-  },
-
-  // Banh Mi Sandwiches
-  {
-    id: "ham-pork-pate-banh-mi",
-    name: "Ham/Pork & Pate Banh Mi",
-    price: "$8.75",
-    description: "Ham & pork roll, pate, mayo, daikon, cucumber, jalapeño and cilantro",
-    image: "/chowbus_menu_evanston/banh_mi_sandwiches/015_hampork__pate_banh_mi.jpg",
-    category: "Banh Mi Sandwiches"
-  },
-  {
-    id: "veggie-tofu-banh-mi",
-    name: "Veggie Tofu Banh Mi",
-    price: "$8.00",
-    description: "Fresh tofu and vegetables with Vietnamese flavors",
-    image: "/chowbus_menu_evanston/banh_mi_sandwiches/008_veggie_tofu_banh_mi.jpg",
-    category: "Banh Mi Sandwiches"
-  },
-  {
-    id: "chicken-banh-mi",
-    name: "Chicken Banh Mi",
-    price: "$8.75",
-    description: "Grilled chicken with fresh herbs and vegetables",
-    image: "/chowbus_menu_evanston/banh_mi_sandwiches/017_chicken_banh_mi.jpg",
-    category: "Banh Mi Sandwiches"
-  },
-  {
-    id: "grilled-pork-banh-mi",
-    name: "Grilled Pork Banh Mi",
-    price: "$8.75",
-    description: "Marinated grilled pork with fresh accompaniments",
-    image: "/chowbus_menu_evanston/banh_mi_sandwiches/018_grilled_pork_banh_mi.jpg",
-    category: "Banh Mi Sandwiches"
-  },
-
-  // Spring Rolls
-  {
-    id: "shrimp-spring-roll",
-    name: "Shrimp Spring Roll (Peanut Sauce)",
-    price: "$7.75",
-    description: "Fresh shrimp, lettuce, cucumber, cilantro in rice paper with peanut sauce",
-    image: "/chowbus_menu_evanston/spring_rolls/020_shrimp_spring_roll_peanut_sauce.jpg",
-    category: "Spring Rolls"
-  },
-  {
-    id: "veggie-tofu-spring-roll",
-    name: "Veggie Tofu Spring Roll (Peanut Sauce)",
-    price: "$7.75",
-    description: "Fresh tofu and vegetables in rice paper with peanut sauce",
-    image: "/chowbus_menu_evanston/spring_rolls/019_veggie_tofu_spring_roll_peanut_sauce.jpg",
-    category: "Spring Rolls"
-  },
-  {
-    id: "grilled-pork-sausage-spring-roll",
-    name: "Grilled Pork Sausage Spring Roll (Peanut Sauce)",
-    price: "$7.95",
-    description: "Grilled pork sausage with fresh herbs in rice paper",
-    image: "/chowbus_menu_evanston/spring_rolls/021_grilled_pork_sausage_spring_roll_peanut_sauce.jpg",
-    category: "Spring Rolls"
-  },
-
-  // Salads & Light Food
-  {
-    id: "savory-salad",
-    name: "Savory Salad",
-    price: "$8.50",
-    description: "Fresh mixed greens with choice of protein and dressing",
-    image: "/chowbus_menu_evanston/salads_food/022_savory_salad.jpg",
-    category: "Salads & Light Food"
-  }
-];
 
 export default function EvanstonMenuPage() {
   const [isOpen, setIsOpen] = useState(true);
@@ -392,46 +10,251 @@ export default function EvanstonMenuPage() {
     const checkIfOpen = () => {
       const now = new Date();
       const cstTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Chicago" }));
-      const day = cstTime.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+      const day = cstTime.getDay();
       const hour = cstTime.getHours();
 
-      // Sun-Thu: 7AM-7PM (0,1,2,3,4), Fri-Sat: 7AM-9PM (5,6)
       if (day >= 0 && day <= 4) {
-        // Sunday to Thursday: 7AM-7PM
         setIsOpen(hour >= 7 && hour < 19);
       } else {
-        // Friday, Saturday: 7AM-9PM
         setIsOpen(hour >= 7 && hour < 21);
       }
     };
 
     checkIfOpen();
-    const interval = setInterval(checkIfOpen, 60000); // Check every minute
+    const interval = setInterval(checkIfOpen, 60000);
     return () => clearInterval(interval);
   }, []);
 
-  const categories = [
-    { id: "Matcha Specialties", label: "Matcha Specialties", emoji: "🍵", image: "/chowbus_menu_evanston_enhanced/matcha_specialties/002_matcha_latte_hot_or_iced.jpg" },
-    { id: "Coffee & Espresso", label: "Coffee & Espresso", emoji: "☕", image: "/chowbus_menu_evanston_enhanced/coffee_espresso/045_latte_choose_your_fav.jpg" },
-    { id: "Milk Tea & Boba", label: "Milk Tea & Boba", emoji: "🧋", image: "/chowbus_menu_evanston_enhanced/milk_tea_boba/007_signature_milk_tea.jpg" },
-    { id: "Specialty Teas", label: "Specialty Teas", emoji: "🍃", image: "/chowbus_menu_evanston_enhanced/specialty_teas/030_loose_leaf_tea_choose_your_fav.jpg" },
-    { id: "Smoothies & Drinks", label: "Smoothies & Drinks", emoji: "🥤", image: "/chowbus_menu_evanston_enhanced/smoothies_drinks/023_smoothies__boba_tea_choose_up_to_2_flavors.jpg" },
-    { id: "Hot Beverages", label: "Hot Beverages", emoji: "☕", image: "/chowbus_menu_evanston_enhanced/hot_beverages/052_hot_cocoa.jpg" },
-    { id: "Banh Mi Sandwiches", label: "Banh Mi Sandwiches", emoji: "🥖", image: "/chowbus_menu_evanston_enhanced/banh_mi_sandwiches/015_hampork__pate_banh_mi.jpg" },
-    { id: "Spring Rolls", label: "Spring Rolls", emoji: "🌯", image: "/chowbus_menu_evanston_enhanced/spring_rolls/020_shrimp_spring_roll_peanut_sauce.jpg" },
-    { id: "Salads & Light Food", label: "Salads & Light Food", emoji: "🥗", image: "/chowbus_menu_evanston_enhanced/salads_food/022_savory_salad.jpg" },
+  const menuSections = [
+    {
+      id: "coffee-more",
+      title: "Coffee and More",
+      items: [
+        "Coffee",
+        "Iced Coffee",
+        "Espresso",
+        "Americano",
+        "Cortado",
+        "Latte",
+        "Cappuccino",
+        "Mocha",
+        "Chai",
+        "Caramel Latte",
+        "Raspberry Mocha",
+        "Mocha Chai",
+        "Hot Cocoa",
+        "Vietnamese Iced Black Coffee",
+        "Vietnamese Iced Milk Coffee (Cà Phê Sữa Đá)",
+        "Cafe Soda (Cà Phê Soda)",
+        "Vietnamese Drip Coffee (Cà Phê Phin)",
+        "Taro Latte",
+        "Mint Frappe",
+        "Mocha Frappe",
+        "Caramel Frappe"
+      ]
+    },
+    {
+      id: "specialty-drinks",
+      title: "Specialty Drinks",
+      items: [
+        "Vietnamese Iced Milk Coffee (Cà Phê Sữa Đá)",
+        "Matcha Latte",
+        "Strawberry Matcha Latte",
+        "Thai Iced Milk Tea",
+        "Taro Latte",
+        "Passion Fruit Green Tea",
+        "Strawberry Hibiscus Tea",
+        "Strawberry Kiwi Green Tea",
+        "Signature Milk Tea",
+        "Brown Sugar Milk Tea",
+        "Choco Tiger Milk Tea",
+        "Honey Ginger Tea"
+      ]
+    },
+    {
+      id: "matcha-specialty",
+      title: "Matcha Specialty",
+      items: [
+        "Matcha Latte",
+        "Mango Matcha Latte",
+        "Strawberry Matcha Latte",
+        "Matcha Milk Tea",
+        "Mango Matcha Smoothie",
+        "Matcha Smoothie",
+        "Matcha Frappe"
+      ]
+    },
+    {
+      id: "tea-more",
+      title: "Tea and More",
+      items: [
+        "Honey Ginger Tea",
+        "Citron Tea",
+        "Mango Green Tea",
+        "Coconut Green Tea",
+        "Passion Fruit Green Tea",
+        "Strawberry Hibiscus Tea",
+        "Strawberry Kiwi Green Tea",
+        "Peach Black Tea",
+        "Jasmine Green Tea",
+        "Peppermint Tea",
+        "Hibiscus Tea",
+        "Madame Butterfly Tea",
+        "Black Tea"
+      ]
+    },
+    {
+      id: "milk-tea",
+      title: "Milk Tea (Hot or Iced)",
+      items: [
+        "Brown Sugar Milk Tea",
+        "Chai Milk Tea",
+        "Choco Tiger Milk Tea",
+        "Classic Milk Tea",
+        "Coffee Milk Tea",
+        "Coconut Milk Tea",
+        "Earl Grey Milk Tea",
+        "Honeydew Milk Tea",
+        "Jasmine Milk Tea",
+        "Mango Milk Tea",
+        "Matcha Milk Tea",
+        "Signature Milk Tea",
+        "Strawberry Milk Tea",
+        "Taro Milk Tea",
+        "Thai Milk Tea"
+      ]
+    },
+    {
+      id: "smoothies",
+      title: "Smoothies (Choose up to two flavors)",
+      items: [
+        "Mango",
+        "Strawberry",
+        "Banana",
+        "Kiwi",
+        "Pineapple",
+        "Vanilla",
+        "Honeydew",
+        "Taro"
+      ]
+    },
+    {
+      id: "breakfast",
+      title: "Breakfast Sandwiches",
+      items: [
+        "Toasted Bagel - Plain or Everything",
+        "Egg and Cheese",
+        "Egg, Ham and Cheese",
+        "Lox",
+        "Nutella Banana Crunch"
+      ]
+    },
+    {
+      id: "banh-mi",
+      title: "Banh Mi",
+      items: [
+        "Classic Ham and Pork Pâté",
+        "Veggie Tofu",
+        "Roasted Chicken",
+        "Grilled Pork Sausage"
+      ]
+    },
+    {
+      id: "panini",
+      title: "Panini",
+      items: [
+        "Grilled Cheese",
+        "Hazelnut Nutella",
+        "Cheddar Ham",
+        "Turkey Provolone"
+      ]
+    },
+    {
+      id: "spring-rolls",
+      title: "Spring Rolls",
+      items: [
+        "Veggie Tofu",
+        "Shrimp",
+        "Grilled Pork Sausage Sampler"
+      ]
+    },
+    {
+      id: "other-food",
+      title: "Other Food",
+      items: [
+        "Savory Salad",
+        "Spicy Noodle Soup"
+      ]
+    }
   ];
 
-  // Group items by category
-  const groupedMenu = categories.map(category => ({
-    ...category,
-    items: evanstonMenu.filter(item => item.category === category.id)
-  })).filter(group => group.items.length > 0);
   return (
+    <>
+      {/* Page Meta Tags */}
+      <title>Evanston Menu - Outdoor Café | Vietnamese Coffee & Boba Tea</title>
+      <meta name="description" content="Evanston Outdoor Café menu featuring Vietnamese coffee, matcha specialties, boba tea, banh mi sandwiches, and spring rolls. Open 7AM-7PM Sun-Thu, 7AM-9PM Fri-Sat. Order online!" />
+      <meta name="keywords" content="evanston cafe, vietnamese coffee evanston, boba tea evanston, matcha latte, banh mi evanston, coffee shop central street" />
+      <link rel="canonical" href="https://outdoorcafe.com/locations/evanston" />
+
+      {/* Open Graph */}
+      <meta property="og:type" content="restaurant" />
+      <meta property="og:url" content="https://outdoorcafe.com/locations/evanston" />
+      <meta property="og:title" content="Evanston Location - Outdoor Café Menu" />
+      <meta property="og:description" content="Vietnamese coffee, matcha lattes, boba tea, and banh mi at our Evanston location. 2012 Central Street. Order online for pickup!" />
+      <meta property="og:image" content="https://outdoorcafe.com/favicon.png" />
+
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Evanston Location - Outdoor Café Menu" />
+      <meta name="twitter:description" content="Vietnamese coffee, matcha lattes, boba tea, and banh mi at our Evanston location." />
+
+      {/* Local Business */}
+      <meta name="geo.position" content="42.0471;-87.6876" />
+      <meta name="geo.placename" content="Evanston, Illinois" />
+      <meta name="geo.region" content="US-IL" />
+
+      {/* Restaurant Structured Data for Evanston */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Restaurant",
+            "name": "Outdoor Café - Evanston",
+            "image": "https://outdoorcafe.com/favicon.png",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "2012 Central Street",
+              "addressLocality": "Evanston",
+              "addressRegion": "IL",
+              "postalCode": "60201",
+              "addressCountry": "US"
+            },
+            "telephone": "+18474250022",
+            "url": "https://outdoorcafe.com/locations/evanston",
+            "servesCuisine": ["Vietnamese", "Coffee", "Café", "Boba Tea"],
+            "priceRange": "$$",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+                "opens": "07:00",
+                "closes": "19:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Friday", "Saturday"],
+                "opens": "07:00",
+                "closes": "21:00"
+              }
+            ],
+            "hasMenu": "https://outdoorcafe.com/locations/evanston"
+          })
+        }}
+      />
     <main className="w-full min-h-screen bg-cream">
       {/* Header & Order Online Section */}
       <section className="py-12 sm:py-16 bg-warm-light relative overflow-hidden">
-        {/* Floating background elements */}
         <div className="absolute top-12 right-10 w-2 h-2 bg-accent-solid/20 rounded-full animate-float"></div>
         <div className="absolute bottom-10 left-16 w-1.5 h-1.5 bg-accent-solid/30 rounded-full animate-float" style={{animationDelay: '3s'}}></div>
 
@@ -484,51 +307,56 @@ export default function EvanstonMenuPage() {
       </section>
 
       {/* Menu Section */}
-      <section className="py-10 sm:py-12 bg-warm-light">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8">
-          <div className="text-center mb-8 sm:mb-10">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light mb-4 text-warm-dark text-balance">
-              Full Menu
-            </h2>
-            <div className="w-16 h-1 bg-sage mx-auto rounded-full"></div>
+      <section className="py-12 sm:py-16 bg-cream">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-light text-warm-dark">Menu</h2>
+            <div className="w-16 h-1 bg-sage mx-auto rounded-full mt-4"></div>
           </div>
+          <div className="text-center space-y-12">
+            {menuSections.map((section) => (
+              <div key={section.id} className="space-y-4">
+                {/* Category Header */}
+                <h3 className="text-base font-semibold text-gray-900">
+                  {section.title}
+                </h3>
 
-          {/* Menu Grid - Masonry layout on desktop, single column on mobile */}
-          <div className="columns-1 lg:columns-2 gap-8 lg:gap-12">
-            {groupedMenu.map((group) => (
-              <div key={group.id} className="bg-white rounded-2xl shadow-warm overflow-hidden mb-8 lg:mb-12 break-inside-avoid">
-                {/* Category Header with Image */}
-                <div className="relative overflow-hidden">
-                  <div className="h-48 sm:h-56 md:h-64 overflow-hidden">
-                    <img
-                      src={group.image}
-                      alt={group.label}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                    <h3 className="text-2xl sm:text-3xl font-light text-white">
-                      {group.label}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Menu Items */}
-                <div className="p-4 sm:p-6 space-y-3">
-                  {group.items.map((item) => (
-                    <div key={item.id} className="border-b border-gray-100 last:border-0 pb-3 last:pb-0">
-                      <h4 className="text-base font-medium text-gray-900 mb-1">{item.name}</h4>
-                      <p className="text-gray-600 text-sm leading-snug">{item.description}</p>
-                    </div>
+                {/* Menu Items - Pipe Separated */}
+                <p className="text-gray-800 text-base leading-relaxed">
+                  {section.items.map((item, index) => (
+                    <span key={index}>
+                      {item}
+                      {index < section.items.length - 1 && ' | '}
+                    </span>
                   ))}
-                </div>
+                </p>
               </div>
             ))}
+
+            {/* Pastries Section */}
+            <div className="space-y-4">
+              <h3 className="text-base font-semibold text-gray-900">
+                Pastries
+              </h3>
+              <p className="text-gray-800 text-base leading-relaxed">
+                Fresh pastries from local bakery (Dokil Bakery)
+              </p>
+            </div>
+
+            {/* Catering Info */}
+            <div className="pt-6 space-y-3 text-gray-700 border-t border-gray-300">
+              <h4 className="text-lg font-semibold text-gray-900">Catering Available</h4>
+              <p className="text-sm">
+                We offer catering options including Spring Rolls, Egg Rolls, and Banh Mi trays.
+              </p>
+              <p className="text-sm">
+                Requires 24 hours advance notice. Please contact your nearest location to discuss catering.
+              </p>
+            </div>
           </div>
         </div>
       </section>
-
     </main>
+    </>
   );
 }

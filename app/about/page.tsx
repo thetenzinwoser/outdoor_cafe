@@ -59,6 +59,25 @@ export default function About() {
   useScrollAnimation();
 
   return (
+    <>
+      {/* Page Meta Tags */}
+      <title>About Us - Outdoor Café | Our Story & Vietnamese Coffee Tradition</title>
+      <meta name="description" content="Learn about Outdoor Café's story, our commitment to authentic Vietnamese coffee culture, and our two locations in Chicago North Park and Evanston serving the community since 2014." />
+      <meta name="keywords" content="about outdoor cafe, vietnamese coffee tradition, chicago cafe story, family owned cafe, authentic vietnamese coffee" />
+      <link rel="canonical" href="https://outdoorcafe.com/about" />
+
+      {/* Open Graph */}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://outdoorcafe.com/about" />
+      <meta property="og:title" content="About Outdoor Café - Our Story" />
+      <meta property="og:description" content="Learn about our Vietnamese coffee tradition and commitment to quality at our Chicago and Evanston locations." />
+      <meta property="og:image" content="https://outdoorcafe.com/espresso.jpg" />
+
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="About Outdoor Café - Our Story" />
+      <meta name="twitter:description" content="Vietnamese coffee tradition and quality at our Chicago and Evanston locations." />
+
     <main className="w-full min-h-screen bg-cream">
       {/* Hero Section */}
       <section className="min-h-[60vh] flex items-center justify-center relative overflow-hidden">
@@ -132,5 +151,6 @@ export default function About() {
         </div>
       </section>
     </main>
+    </>
   );
 } 
