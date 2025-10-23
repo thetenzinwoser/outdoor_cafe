@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 // Enhanced reusable components (matching the main page)
@@ -57,6 +57,32 @@ const useScrollAnimation = () => {
 
 export default function Contact() {
   useScrollAnimation();
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formMessage, setFormMessage] = useState('');
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const firstName = formData.get('firstName');
+    const lastName = formData.get('lastName');
+    const email = formData.get('email');
+    const message = formData.get('message');
+
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`Contact Form: ${firstName} ${lastName}`);
+    const body = encodeURIComponent(
+      `Name: ${firstName} ${lastName}\n` +
+      `Email: ${email}\n\n` +
+      `Message:\n${message}`
+    );
+
+    // Open email client
+    window.location.href = `mailto:outdoorcafe2014@gmail.com?subject=${subject}&body=${body}`;
+
+    setFormStatus('success');
+    setFormMessage('Your email client should open shortly. If it doesn\'t, please email us directly at outdoorcafe2014@gmail.com');
+  };
 
   return (
     <>
@@ -120,7 +146,17 @@ export default function Contact() {
           </div>
           
           <div className="card-modern p-8 sm:p-12 fade-in-up">
-            <form className="space-y-6">
+            {formStatus === 'success' && (
+              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
+                {formMessage}
+              </div>
+            )}
+            {formStatus === 'error' && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
+                {formMessage}
+              </div>
+            )}
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-medium text-gray-900 mb-2">
@@ -178,9 +214,10 @@ export default function Contact() {
               <div className="text-center pt-4">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-12 py-4 bg-red-500 hover:bg-red-600 text-white font-medium text-lg !rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                  disabled={formStatus === 'submitting'}
+                  className="w-full sm:w-auto px-12 py-4 bg-red-500 hover:bg-red-600 text-white font-medium text-lg !rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  Send
+                  {formStatus === 'submitting' ? 'Sending...' : 'Send'}
                 </button>
               </div>
             </form>
@@ -255,9 +292,9 @@ export default function Contact() {
                 <div className="space-y-4 text-gray-700 mb-6">
                   <div>
                     <p className="text-lg sm:text-xl font-medium text-gray-900 mb-1">Address</p>
-                    <p className="text-base sm:text-lg">456 Sherman Avenue<br />Evanston, IL 60201</p>
+                    <p className="text-base sm:text-lg">2012 Central St<br />Evanston, IL 60201</p>
                   </div>
-                  
+
                   <div>
                     <p className="text-lg sm:text-xl font-medium text-gray-900 mb-1">Phone</p>
                     <a href="tel:+18474250022" className="text-base sm:text-lg text-gray-900 hover:text-sage transition-colors" aria-label="Call Evanston at 847 425 0022">
@@ -273,8 +310,8 @@ export default function Contact() {
                   </div>
                 </div>
                 
-                <a 
-                  href="https://maps.google.com/maps?q=456+Sherman+Avenue,+Evanston,+IL+60201"
+                <a
+                  href="https://maps.google.com/maps?q=2012+Central+St,+Evanston,+IL+60201"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block px-6 py-3 border-2 border-sage text-sage hover:bg-sage hover:text-white transition-all duration-300 !rounded-full font-medium"

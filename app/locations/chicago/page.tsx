@@ -35,22 +35,21 @@ export default function NorthParkMenuPage() {
         "Espresso",
         "Americano",
         "Cortado",
-        "Latte",
         "Cappuccino",
-        "Mocha",
-        "Chai",
-        "Caramel Latte",
-        "Raspberry Mocha",
-        "Mocha Chai",
         "Hot Cocoa",
         "Vietnamese Iced Black Coffee",
         "Vietnamese Iced Milk Coffee (Cà Phê Sữa Đá)",
-        "Cafe Soda (Cà Phê Soda)",
-        "Vietnamese Drip Coffee (Cà Phê Phin)",
-        "Taro Latte",
-        "Mint Frappe",
-        "Mocha Frappe",
-        "Caramel Frappe"
+        "Vietnamese Drip Coffee (Cà Phê Phin)"
+      ],
+      subsections: [
+        {
+          prefix: "Latte -",
+          items: ["Caramel", "Chai", "Matcha", "Mocha", "Raspberry Mocha", "Taro"]
+        },
+        {
+          prefix: "Frappe -",
+          items: ["Caramel", "Matcha", "Mocha", "Mint"]
+        }
       ]
     },
     {
@@ -60,11 +59,8 @@ export default function NorthParkMenuPage() {
         "Vietnamese Iced Milk Coffee (Cà Phê Sữa Đá)",
         "Matcha Latte",
         "Strawberry Matcha Latte",
-        "Thai Iced Milk Tea",
-        "Taro Latte",
         "Passion Fruit Green Tea",
         "Strawberry Hibiscus Tea",
-        "Strawberry Kiwi Green Tea",
         "Signature Milk Tea",
         "Brown Sugar Milk Tea",
         "Choco Tiger Milk Tea",
@@ -81,47 +77,48 @@ export default function NorthParkMenuPage() {
         "Matcha Milk Tea",
         "Mango Matcha Smoothie",
         "Matcha Smoothie",
-        "Matcha Frappe"
+        "Matcha Frappe",
+        "Matcha Milkshake"
       ]
     },
     {
       id: "tea-more",
       title: "Tea and More",
       items: [
-        "Honey Ginger Tea",
-        "Citron Tea",
-        "Mango Green Tea",
-        "Coconut Green Tea",
-        "Passion Fruit Green Tea",
-        "Strawberry Hibiscus Tea",
-        "Strawberry Kiwi Green Tea",
-        "Peach Black Tea",
-        "Jasmine Green Tea",
-        "Peppermint Tea",
-        "Hibiscus Tea",
-        "Madame Butterfly Tea",
-        "Black Tea"
+        "Honey Ginger",
+        "Citron (Yuja)",
+        "Mango Green",
+        "Coconut Green",
+        "Passion Fruit Green",
+        "Strawberry Hibiscus",
+        "Strawberry Kiwi Green",
+        "Peach Black",
+        "Jasmine Green",
+        "Peppermint",
+        "Hibiscus",
+        "Madame Butterfly",
+        "Black",
+        "Earl Grey"
       ]
     },
     {
       id: "milk-tea",
       title: "Milk Tea (Hot or Iced)",
       items: [
-        "Brown Sugar Milk Tea",
-        "Chai Milk Tea",
-        "Choco Tiger Milk Tea",
-        "Classic Milk Tea",
-        "Coffee Milk Tea",
-        "Coconut Milk Tea",
-        "Earl Grey Milk Tea",
-        "Honeydew Milk Tea",
-        "Jasmine Milk Tea",
-        "Mango Milk Tea",
-        "Matcha Milk Tea",
-        "Signature Milk Tea",
-        "Strawberry Milk Tea",
-        "Taro Milk Tea",
-        "Thai Milk Tea"
+        "Brown Sugar",
+        "Chai",
+        "Choco Tiger",
+        "Classic",
+        "Coffee",
+        "Coconut",
+        "Earl Grey",
+        "Honeydew",
+        "Jasmine",
+        "Matcha",
+        "Signature",
+        "Strawberry",
+        "Taro",
+        "Thai"
       ]
     },
     {
@@ -134,10 +131,18 @@ export default function NorthParkMenuPage() {
         "Banana",
         "Kiwi",
         "Pineapple",
-        "Red Bean",
-        "Vanilla",
+        "Peach",
+        "Espresso",
+        "Cookies & Cream",
+        "Watermelon",
+        "Matcha",
+        "Milk Tea",
+        "Taro",
+        "Coconut",
         "Honeydew",
-        "Taro"
+        "Red Bean",
+        "Chocolate",
+        "Vanilla"
       ]
     },
     {
@@ -145,8 +150,8 @@ export default function NorthParkMenuPage() {
       title: "Milkshakes",
       items: [
         "Banana",
+        "Choco Espresso",
         "Chocolate",
-        "Espresso",
         "Chocolate Banana",
         "Cookies and Cream",
         "Mango",
@@ -160,11 +165,16 @@ export default function NorthParkMenuPage() {
       id: "breakfast",
       title: "Breakfast Sandwiches",
       items: [
-        "Toasted Bagel - Plain or Everything",
         "Egg and Cheese",
         "Egg, Ham and Cheese",
         "Lox",
         "Nutella Banana Crunch"
+      ],
+      subsections: [
+        {
+          prefix: "Toasted Bagel -",
+          items: ["Plain", "Everything"]
+        }
       ]
     },
     {
@@ -182,7 +192,7 @@ export default function NorthParkMenuPage() {
       title: "Panini",
       items: [
         "Grilled Cheese",
-        "Hazelnut Nutella",
+        "Hazelnut Heaven",
         "Cheddar Ham",
         "Turkey Provolone"
       ]
@@ -192,9 +202,8 @@ export default function NorthParkMenuPage() {
       title: "Other Food",
       items: [
         "Savory Salad",
-        "Shrimp Ramen",
-        "Spicy Noodle Soup",
-        "Chicken Pho - Seasonal (Grab and Go)"
+        "Shin Ramyun Spicy Noodles Soup",
+        "Shin Ramyun Black Noodles Soup"
       ]
     }
   ];
@@ -341,6 +350,13 @@ export default function NorthParkMenuPage() {
                     </span>
                   ))}
                 </p>
+
+                {/* Subsections if they exist */}
+                {section.subsections && section.subsections.map((subsection, subIndex) => (
+                  <p key={subIndex} className="text-gray-800 text-base leading-relaxed">
+                    {subsection.prefix} {subsection.items.join(' | ')}
+                  </p>
+                ))}
               </div>
             ))}
 
@@ -361,7 +377,7 @@ export default function NorthParkMenuPage() {
                 We offer catering options including Spring Rolls, Egg Rolls, and Banh Mi trays.
               </p>
               <p className="text-sm">
-                Requires 24 hours advance notice. Please contact your nearest location to discuss catering.
+                Requires 24 hours advance notice. Please call your nearest location to discuss catering or email outdoorcafe2014@gmail.com.
               </p>
             </div>
           </div>
