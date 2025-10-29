@@ -78,7 +78,8 @@ export default function NorthParkMenuPage() {
         "Mango Matcha Smoothie",
         "Matcha Smoothie",
         "Matcha Frappe",
-        "Matcha Milkshake"
+        "Matcha Milkshake",
+        "Matcha Cold Foam"
       ]
     },
     {
@@ -88,10 +89,9 @@ export default function NorthParkMenuPage() {
         "Honey Ginger",
         "Citron (Yuja)",
         "Mango Green",
-        "Coconut Green",
         "Passion Fruit Green",
         "Strawberry Hibiscus",
-        "Strawberry Kiwi Green",
+        "Strawberry Green",
         "Peach Black",
         "Jasmine Green",
         "Peppermint",
@@ -337,9 +337,12 @@ export default function NorthParkMenuPage() {
             {menuSections.map((section) => (
               <div key={section.id} className="space-y-4">
                 {/* Category Header */}
-                <h3 className="text-base font-semibold text-gray-900">
-                  {section.title}
-                </h3>
+                <div>
+                  <h3 className="text-base font-semibold text-gray-900">
+                    {section.title}
+                  </h3>
+                  <div className="w-16 h-0.5 bg-sage mx-auto rounded-full mt-2"></div>
+                </div>
 
                 {/* Menu Items - Pipe Separated */}
                 <p className="text-gray-800 text-base leading-relaxed">
@@ -362,9 +365,12 @@ export default function NorthParkMenuPage() {
 
             {/* Pastries Section */}
             <div className="space-y-4">
-              <h3 className="text-base font-semibold text-gray-900">
-                Pastries
-              </h3>
+              <div>
+                <h3 className="text-base font-semibold text-gray-900">
+                  Pastries
+                </h3>
+                <div className="w-16 h-0.5 bg-sage mx-auto rounded-full mt-2"></div>
+              </div>
               <p className="text-gray-800 text-base leading-relaxed">
                 Fresh pastries from local bakery (Dokil Bakery)
               </p>

@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import './globals.css';
 import type { ReactNode } from 'react';
 import Link from 'next/link';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -145,7 +146,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <title>Outdoor Café - Vietnamese Coffee & Café | Chicago & Evanston</title>
-        <meta name="description" content="Vietnamese café serving premium coffee, matcha lattes, boba tea, banh mi, and smoothies. Two locations in Chicago North Park and Evanston. Order online for pickup." />
+        <meta name="description" content="Vietnamese café serving premium coffee, matcha lattes, boba tea, banh mi, spring rolls, and smoothies. Two locations in Chicago North Park and Evanston. Order online for pickup." />
         <meta name="keywords" content="vietnamese coffee, cafe chicago, boba tea, matcha latte, banh mi, coffee shop evanston, outdoor cafe, north park cafe, vietnamese food" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="Outdoor Café" />
@@ -253,6 +254,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </head>
       <body className="bg-white text-gray-900 font-serif min-h-screen flex flex-col">
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
         <Navbar />
         <main className="flex-1 w-full mx-auto">{children}</main>
         <footer className="bg-gray-900 text-white py-12 sm:py-16">

@@ -113,21 +113,34 @@ export default function About() {
         <div className="max-w-4xl mx-auto px-6 sm:px-8">
           <div className="text-center fade-in-up">
             <SectionHeading className="mb-8 text-warm-dark">
-              Coffee, Community & <span className="text-accent-solid">CRAFT</span>
+              A Love Story <span className="text-accent-solid">25 YEARS</span> in the Making
             </SectionHeading>
             <div className="w-24 h-1 bg-accent-solid mx-auto rounded-full mb-12"></div>
-            
-            <div className="space-y-8 max-w-3xl mx-auto">
+
+            <div className="space-y-8 max-w-3xl mx-auto text-left">
               <SectionText className="text-xl">
-                Founded in 2018 by two passionate food and beverage enthusiasts, Outdoor Café was born from a simple dream: to create spaces where aromatic coffee, refreshing smoothies, delicious boba tea, and flavorful Banh Mi meet genuine community.
+                Back in 1999, my wife and I were just college students looking for a quiet place to study and hang out. We found this little café – a cozy corner where we could spend hours playing board games, sipping coffee, and dreaming about the future. It became our spot.
               </SectionText>
-              
+
               <SectionText>
-                We source our coffee beans directly from sustainable farms and craft each item with care, ensuring every aromatic coffee, refreshing smoothie, delicious boba tea, and flavorful Banh Mi reflects our commitment to quality, sustainability, and the belief that great food and drinks bring people together.
+                Fast forward to 2014. That same café was up for sale, and the memories came flooding back. We couldn't let it disappear. We wanted to preserve what made it special – that welcoming atmosphere where students could claim their favorite corner, where first dates turned into lasting memories, where you could stay from open to close without anyone rushing you out.
               </SectionText>
-              
-              <SectionText className="font-medium text-accent-solid text-xl">
-                "We wanted to create more than just a café – we wanted to build a home away from home for our community."
+
+              <SectionText>
+                When we took over, the café was more of a smoothie and dessert spot than a coffee shop. We kept the soul of the place but expanded the menu – adding authentic Vietnamese coffee, matcha specialties, boba tea, banh mi, and all the drinks our community wanted. Today, we're proud to offer everything from traditional Cà Phê Sữa Đá to innovative matcha creations you won't find anywhere else.
+              </SectionText>
+
+              <SectionText>
+                Our Evanston location carries the same philosophy: come in, get comfortable, and stay as long as you'd like. Whether you're a medical student cramming for exams, friends catching up, or someone who just needs a quiet corner with good coffee – this is your space.
+              </SectionText>
+
+              <SectionText className="font-medium text-accent-solid text-xl italic">
+                "We don't just serve coffee. We preserve memories, create corners for connection, and keep the lights on for anyone who needs a place to belong."
+              </SectionText>
+
+              <SectionText className="text-base text-gray-600 mt-8">
+                — Kevin, Owner<br/>
+                Outdoor Café (since 2014, loyal customer since 1999)
               </SectionText>
             </div>
           </div>
