@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import Head from "next/head";
 
 // Enhanced reusable components (matching the main page)
 const SectionHeading = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (

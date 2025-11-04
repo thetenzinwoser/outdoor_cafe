@@ -252,6 +252,77 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             })
           }}
         />
+
+        {/* FAQ Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What time does Outdoor Café open?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "North Park location: Monday-Thursday 8am-8pm, Friday-Sunday 8am-9pm. Evanston location: Sunday-Thursday 7am-7pm, Friday-Saturday 7am-9pm."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Does Outdoor Café have vegan options?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! We offer vegan spring rolls, smoothies, and many dairy-free drink options including Vietnamese coffee with oat milk or almond milk."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do you serve banh mi?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, both locations serve authentic Vietnamese banh mi sandwiches."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I order online for pickup?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, you can order online through ChowBus for pickup at either location."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What is your most popular drink?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our Vietnamese iced coffee (Cà Phê Sữa Đá) and matcha lattes are customer favorites."
+                  }
+                }
+              ]
+            })
+          }}
+        />
+
+        {/* WebSite Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Outdoor Café",
+              "url": "https://outdoorcafe.com",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://outdoorcafe.com/menu?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
       </head>
       <body className="bg-white text-gray-900 font-serif min-h-screen flex flex-col">
         {process.env.NEXT_PUBLIC_GA_ID && (
@@ -259,14 +330,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         )}
         <Navbar />
         <main className="flex-1 w-full mx-auto">{children}</main>
-        <footer className="bg-gray-900 text-white py-12 sm:py-16">
+        <footer className="bg-gray-900 text-white py-12 sm:py-16" itemScope itemType="https://schema.org/Organization">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mb-8 sm:mb-12">
               <div className="space-y-3">
                 <h4 className="text-xs sm:text-sm font-medium text-accent uppercase tracking-wide">Get in Touch</h4>
                 <div className="space-y-2 text-gray-300 font-light">
-                  <a href="tel:+17735396078" className="block hover:text-sage transition-colors" aria-label="Call North Park at 773 539 6078">North Park: (773) 539-6078</a>
-                  <a href="tel:+18474250022" className="block hover:text-sage transition-colors" aria-label="Call Evanston at 847 425 0022">Evanston: (847) 425-0022</a>
+                  <a href="tel:+17735396078" className="block hover:text-sage transition-colors" aria-label="Call North Park at 773 539 6078" itemProp="telephone" data-location="north-park">North Park: (773) 539-6078</a>
+                  <a href="tel:+18474250022" className="block hover:text-sage transition-colors" aria-label="Call Evanston at 847 425 0022" itemProp="telephone" data-location="evanston">Evanston: (847) 425-0022</a>
                 </div>
               </div>
               <div>
