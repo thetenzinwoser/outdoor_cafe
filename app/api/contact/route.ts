@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Send email using Resend
-    const data = await resend.emails.send({
+    const { data, error: resendError } = await resend.emails.send({
       from: 'Outdoor Cafe Contact Form <onboarding@resend.dev>', // Will use resend.dev domain initially
       to: 'outdoorcafe2014@gmail.com', // Kevin's email
       replyTo: email, // Customer's email so Kevin can reply directly
@@ -35,6 +35,14 @@ export async function POST(request: NextRequest) {
         </p>
       `,
     });
+
+    if (resendError) {
+      console.error('Resend error:', resendError);
+      return NextResponse.json(
+        { error: resendError.message || 'Failed to send email' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json(
       { success: true, data },
