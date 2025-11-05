@@ -60,28 +60,40 @@ export default function Contact() {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [formMessage, setFormMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormStatus('submitting');
+    setFormMessage('');
 
     const formData = new FormData(e.currentTarget);
-    const firstName = formData.get('firstName');
-    const lastName = formData.get('lastName');
-    const email = formData.get('email');
-    const message = formData.get('message');
+    const data = {
+      firstName: formData.get('firstName') as string,
+      lastName: formData.get('lastName') as string,
+      email: formData.get('email') as string,
+      message: formData.get('message') as string,
+    };
 
-    // Create mailto link with form data
-    const subject = encodeURIComponent(`Contact Form: ${firstName} ${lastName}`);
-    const body = encodeURIComponent(
-      `Name: ${firstName} ${lastName}\n` +
-      `Email: ${email}\n\n` +
-      `Message:\n${message}`
-    );
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-    // Open email client
-    window.location.href = `mailto:outdoorcafe2014@gmail.com?subject=${subject}&body=${body}`;
-
-    setFormStatus('success');
-    setFormMessage('Your email client should open shortly. If it doesn\'t, please email us directly at outdoorcafe2014@gmail.com');
+      if (response.ok) {
+        setFormStatus('success');
+        setFormMessage('Thank you for your message! We\'ll get back to you soon.');
+        e.currentTarget.reset(); // Clear the form
+      } else {
+        setFormStatus('error');
+        setFormMessage('Failed to send message. Please try again or email us directly at outdoorcafe2014@gmail.com');
+      }
+    } catch (error) {
+      setFormStatus('error');
+      setFormMessage('Failed to send message. Please try again or email us directly at outdoorcafe2014@gmail.com');
+    }
   };
 
   return (
