@@ -15,6 +15,7 @@ npm run lint        # Run ESLint
 Create `.env.local` for local configuration:
 ```bash
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX  # Google Analytics Measurement ID (optional)
+RESEND_API_KEY=re_xxxxx         # Resend API key for contact form emails
 ```
 
 ### Testing
@@ -30,6 +31,7 @@ This is a **Next.js 14 App Router** project for an outdoor café website with tw
 - **Language**: TypeScript with strict mode
 - **Fonts**: Google Fonts (Merriweather serif + Quicksand sans-serif)
 - **Analytics**: Google Analytics via @next/third-parties (optional, configured via env)
+- **Email**: Resend for transactional emails (contact form submissions)
 - **Instagram Integration**: react-social-media-embed for social media content
 
 ### App Directory Structure
@@ -39,7 +41,7 @@ app/
 ├── page.tsx               # Homepage with reusable components
 ├── globals.css            # Global styles, animations, design system
 ├── about/page.tsx         # About page with owner's story (from Kevin's transcript)
-├── contact/page.tsx       # Contact page
+├── contact/page.tsx       # Contact page with form submission
 ├── menu/page.tsx          # Main menu page
 ├── locations/
 │   ├── chicago/page.tsx   # North Park location (note: historically Chicago, now North Park)
@@ -48,6 +50,7 @@ app/
 │   ├── GoogleReviewsMarquee.tsx  # Google Reviews display
 │   └── InstagramCarousel.tsx     # Instagram posts carousel
 └── api/
+    ├── contact/route.ts    # Contact form submission endpoint (Resend integration)
     ├── reviews/route.ts    # Google Reviews API endpoint
     ├── menu/
     │   ├── chicago/route.ts   # North Park menu JSON API
@@ -157,8 +160,14 @@ The site is optimized for search engines and AI agents:
 ### Development Notes
 - Port 3001 is used for development (configured in package.json)
 - TypeScript strict mode is enabled
-- No additional UI libraries except react-social-media-embed and @next/third-parties
+- No additional UI libraries except react-social-media-embed, @next/third-parties, and resend
 - Custom utility classes for consistent spacing and animations
 - External ordering links to ChowBus for both locations
 - Google Maps integration for location addresses
-- Git author configured as thetenzinwoser (not knowice1933)
+
+### Deployment
+- **Platform**: Vercel (connected to GitHub for auto-deployment)
+- **Repository**: https://github.com/thetenzinwoser/outdoor_cafe
+- **Domain**: theoutdoorcafe.com (managed via Wix DNS, pointed to Vercel)
+- **Environment Variables**: Set in Vercel dashboard (GA_ID, RESEND_API_KEY)
+- **Auto-Deploy**: Pushes to `main` branch trigger automatic Vercel deployments
