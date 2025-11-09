@@ -22,11 +22,6 @@ const samplePosts: InstagramPost[] = [
     alt: "Fresh drinks at Outdoor Café"
   },
   {
-    id: "3",
-    url: "https://www.instagram.com/p/DLBOU22u9M9/",
-    alt: "Delicious treats from our café"
-  },
-  {
     id: "4",
     url: "https://www.instagram.com/outdoorcafe_boba/reel/DO4ryThjChh/",
     alt: "Behind the scenes at Outdoor Café"
