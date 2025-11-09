@@ -152,10 +152,6 @@ export default function EvanstonMenuPage() {
       ],
       subsections: [
         {
-          prefix: "Breakfast Sandwiches -",
-          items: ["New Breakfast Sandwich"]
-        },
-        {
           prefix: "Toasted Bagels -",
           items: ["Egg and Cheese Bagel", "Egg, Ham and Cheese Bagel", "Lox"]
         }
