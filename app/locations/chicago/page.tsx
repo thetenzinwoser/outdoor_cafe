@@ -163,17 +163,19 @@ export default function NorthParkMenuPage() {
     },
     {
       id: "breakfast",
-      title: "Breakfast Sandwiches",
+      title: "Breakfast",
       items: [
-        "Egg and Cheese",
-        "Egg, Ham and Cheese",
-        "Lox",
-        "Nutella Banana Crunch"
+        "Nutella Crush",
+        "Cinnamon Toast"
       ],
       subsections: [
         {
-          prefix: "Toasted Bagel -",
-          items: ["Plain", "Everything"]
+          prefix: "Breakfast Sandwiches -",
+          items: ["New Breakfast Sandwich"]
+        },
+        {
+          prefix: "Toasted Bagels -",
+          items: ["Egg and Cheese Bagel", "Egg, Ham and Cheese Bagel", "Lox"]
         }
       ]
     },
@@ -383,7 +385,7 @@ export default function NorthParkMenuPage() {
                 We offer catering options including Spring Rolls, Egg Rolls, and Banh Mi trays.
               </p>
               <p className="text-sm">
-                Requires 24 hours advance notice. Please call your nearest location to discuss catering or email outdoorcafe2014@gmail.com.
+                Requires 24 hours advance notice. Please call your nearest location to discuss catering or email <a href="mailto:outdoorcafe2014@gmail.com" className="text-sage hover:text-warm-dark underline transition-colors">outdoorcafe2014@gmail.com</a>.
               </p>
             </div>
           </div>
