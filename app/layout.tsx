@@ -346,7 +346,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   <Link href="/" className="block text-gray-300 font-light hover:text-white transition-colors text-sm sm:text-base">Home</Link>
                   <Link href="/locations/chicago" className="block text-gray-300 font-light hover:text-white transition-colors text-sm sm:text-base">North Park</Link>
                   <Link href="/locations/evanston" className="block text-gray-300 font-light hover:text-white transition-colors text-sm sm:text-base">Evanston</Link>
-                  <Link href="/menu" className="block text-gray-300 font-light hover:text-white transition-colors text-sm sm:text-base">Menu</Link>
                 </div>
               </div>
             </div>
