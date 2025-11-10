@@ -58,7 +58,6 @@ function Navbar() {
 
       {/* Right group: right-side links */}
       <div className="hidden lg:flex items-center lg:justify-self-center gap-6 sm:gap-10 lg:gap-16">
-        <a href="/menu" className="text-gray-800 hover:text-sage font-medium text-base sm:text-lg lg:text-xl transition-all duration-300 hover:scale-105">Menu</a>
         <a href="/about" className="text-gray-800 hover:text-sage font-medium text-base sm:text-lg lg:text-xl transition-all duration-300 hover:scale-105">About</a>
         <a href="/contact" className="text-gray-800 hover:text-sage font-medium text-base sm:text-lg lg:text-xl transition-all duration-300 hover:scale-105">Contact</a>
       </div>
@@ -117,13 +116,6 @@ function Navbar() {
                   onClick={closeMenu}
                 >
                   Evanston
-                </a>
-                <a
-                  href="/menu"
-                  className="block rounded-lg px-4 py-3 text-lg text-gray-900 hover:bg-gray-100 transition-colors font-medium"
-                  onClick={closeMenu}
-                >
-                  Menu
                 </a>
                 <a
                   href="/about"
