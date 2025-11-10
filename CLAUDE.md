@@ -26,13 +26,14 @@ No test framework configured.
 This is a **Next.js 14 App Router** project for an outdoor café website with two locations. Key architectural decisions:
 
 ### Tech Stack
-- **Framework**: Next.js 14.2.30 with App Router (not Pages Router)
+- **Framework**: Next.js 14.0.0 with App Router (not Pages Router)
 - **Styling**: Tailwind CSS with extensive custom design system
 - **Language**: TypeScript with strict mode
 - **Fonts**: Google Fonts (Merriweather serif + Quicksand sans-serif)
 - **Analytics**: Google Analytics via @next/third-parties (optional, configured via env)
 - **Email**: Resend for transactional emails (contact form submissions)
 - **Instagram Integration**: react-social-media-embed for social media content
+- **Security**: html-escaper for sanitizing user input
 
 ### App Directory Structure
 ```
@@ -110,7 +111,7 @@ Location-specific menus (`chicago/page.tsx`, `evanston/page.tsx`):
 
 #### Social Media Integration
 - **GoogleReviewsMarquee**: Displays customer reviews with marquee animation
-- **InstagramCarousel**: Embeds Instagram posts using react-social-media-embed
+- **InstagramCarousel**: Embeds 7 Instagram posts using react-social-media-embed (currently showing posts from @outdoorcafe_boba)
 
 ### SEO & AI Agent Optimization
 

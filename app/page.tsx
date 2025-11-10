@@ -128,7 +128,7 @@ const useScrollAnimation = () => {
 export default function Home() {
   useScrollAnimation();
   const [currentImage, setCurrentImage] = useState(0);
-  const images = ['/cover.jpg', '/cover2.jpg'];
+  const images = ['/hero_evanston.jpg', '/cover2.jpg'];
 
   useEffect(() => {
     const interval = setInterval(() => {
