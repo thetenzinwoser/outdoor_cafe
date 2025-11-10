@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { escape } from 'html-escaper';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -21,13 +22,13 @@ export async function POST(request: NextRequest) {
       from: 'Outdoor Cafe Contact Form <onboarding@resend.dev>', // Will use resend.dev domain initially
       to: 'outdoorcafe2014@gmail.com', // Kevin's email
       replyTo: email, // Customer's email so Kevin can reply directly
-      subject: `New Contact Form Submission from ${firstName} ${lastName}`,
+      subject: `New Contact Form Submission from ${escape(firstName)} ${escape(lastName)}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Name:</strong> ${escape(firstName)} ${escape(lastName)}</p>
+        <p><strong>Email:</strong> ${escape(email)}</p>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <p>${escape(message).replace(/\n/g, '<br>')}</p>
         <hr>
         <p style="color: #666; font-size: 12px;">
           This message was sent from the Outdoor Cafe contact form.<br>

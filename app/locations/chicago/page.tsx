@@ -248,7 +248,7 @@ export default function NorthParkMenuPage() {
               "postalCode": "60659",
               "addressCountry": "US"
             },
-            "telephone": "+17739427272",
+            "telephone": "+17735396078",
             "url": "https://outdoorcafe.com/locations/chicago",
             "servesCuisine": ["Vietnamese", "Coffee", "Café", "Boba Tea"],
             "priceRange": "$$",

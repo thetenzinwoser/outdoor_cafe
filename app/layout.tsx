@@ -201,7 +201,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     "postalCode": "60659",
                     "addressCountry": "US"
                   },
-                  "telephone": "+17739427272",
+                  "telephone": "+17735396078",
                   "openingHoursSpecification": [
                     {
                       "@type": "OpeningHoursSpecification",
