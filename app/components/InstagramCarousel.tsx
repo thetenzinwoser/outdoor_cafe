@@ -22,11 +22,6 @@ const samplePosts: InstagramPost[] = [
     alt: "Fresh drinks at Outdoor Café"
   },
   {
-    id: "4",
-    url: "https://www.instagram.com/outdoorcafe_boba/reel/DO4ryThjChh/",
-    alt: "Behind the scenes at Outdoor Café"
-  },
-  {
     id: "5",
     url: "https://www.instagram.com/outdoorcafe_boba/p/DO4rn5cDJu_/",
     alt: "Fresh coffee and good times"
@@ -35,6 +30,21 @@ const samplePosts: InstagramPost[] = [
     id: "6",
     url: "https://www.instagram.com/outdoorcafe_boba/p/DOoc1VWDh8Y/",
     alt: "The Outdoor Café experience"
+  },
+  {
+    id: "7",
+    url: "https://www.instagram.com/outdoorcafe_boba/p/DQuGQNzDglt/",
+    alt: "Outdoor Café moments"
+  },
+  {
+    id: "8",
+    url: "https://www.instagram.com/outdoorcafe_boba/p/DQcExwbjkTw/",
+    alt: "Outdoor Café delights"
+  },
+  {
+    id: "9",
+    url: "https://www.instagram.com/outdoorcafe_boba/p/DQPvJjckWC2/",
+    alt: "Outdoor Café specialties"
   }
 ];
 
