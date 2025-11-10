@@ -392,8 +392,8 @@ export default function Home() {
               </a>
             </div>
             <div className="fade-in-right stagger-2">
-              <a 
-                href="https://maps.google.com/maps?q=456+Sherman+Avenue,+Evanston,+IL+60201"
+              <a
+                href="https://maps.google.com/maps?q=2012+Central+St,+Evanston,+IL+60201"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group block"
@@ -407,7 +407,7 @@ export default function Home() {
                   <h4 className="text-2xl sm:text-3xl font-light text-warm-dark mb-4">Evanston Location</h4>
                   <div className="w-16 h-0.5 bg-accent-solid mx-auto rounded-full mb-6"></div>
                   <div className="space-y-3 text-gray-700">
-                    <p className="text-lg sm:text-xl font-medium">456 Sherman Avenue</p>
+                    <p className="text-lg sm:text-xl font-medium">2012 Central St</p>
                     <p className="text-base sm:text-lg">Evanston, IL 60201</p>
                     <p className="text-base sm:text-lg font-medium text-accent-solid">Sun-Thu: 7AM-7PM<br />Fri-Sat: 7AM-9PM</p>
                   </div>

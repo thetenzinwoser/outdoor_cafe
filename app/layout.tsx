@@ -224,7 +224,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   "name": "Outdoor Café - Evanston",
                   "address": {
                     "@type": "PostalAddress",
-                    "streetAddress": "2012 Central Street",
+                    "streetAddress": "2012 Central St",
                     "addressLocality": "Evanston",
                     "addressRegion": "IL",
                     "postalCode": "60201",

@@ -31,7 +31,7 @@ export async function GET() {
         id: "evanston",
         name: "Outdoor Café - Evanston",
         address: {
-          street: "2012 Central Street",
+          street: "2012 Central St",
           city: "Evanston",
           state: "IL",
           zip: "60201",

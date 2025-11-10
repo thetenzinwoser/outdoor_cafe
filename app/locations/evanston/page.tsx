@@ -234,7 +234,7 @@ export default function EvanstonMenuPage() {
             "image": "https://outdoorcafe.com/favicon.png",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "2012 Central Street",
+              "streetAddress": "2012 Central St",
               "addressLocality": "Evanston",
               "addressRegion": "IL",
               "postalCode": "60201",
@@ -274,7 +274,7 @@ export default function EvanstonMenuPage() {
           </h1>
           <div className="w-20 h-1 bg-sage mx-auto rounded-full mb-4"></div>
           <p className="text-sm sm:text-base text-gray-600 font-light mb-8">
-            2012 Central Street • Evanston, IL 60201
+            2012 Central St • Evanston, IL 60201
           </p>
 
           {/* Order Online Card */}

@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   const menuData = {
     location: "Evanston",
-    address: "2012 Central Street, Evanston, IL 60201",
+    address: "2012 Central St, Evanston, IL 60201",
     phone: "+18474250022",
     hours: {
       "Sunday-Thursday": "7:00 AM - 7:00 PM",
