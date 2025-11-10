@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Enhanced reusable components (matching the main page)
 const SectionHeading = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
@@ -120,11 +121,13 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="min-h-[60vh] flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/shared.png" 
-            alt="Let's Connect - Sharing Moments Together" 
-            className="w-full h-full object-cover img-warm-filter"
-            loading="eager"
+          <Image
+            src="/shared.png"
+            alt="Let's Connect - Sharing Moments Together"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover img-warm-filter"
           />
           <div className="absolute inset-0 gradient-warm"></div>
         </div>

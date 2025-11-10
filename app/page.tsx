@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import InstagramCarousel from "./components/InstagramCarousel";
 
 // Enhanced reusable components
@@ -35,19 +36,21 @@ const Button = ({ href, children, variant = "primary" }: { href: string; childre
 
 const LocationCard = ({ href, image, title }: { href: string; image: string; title: string }) => (
   <Link href={href} className="group block">
-    <div className="relative overflow-hidden rounded-2xl shadow-warm hover:shadow-warm-lg transition-all duration-500 transform hover:scale-[1.03] hover-glow">
-      <img 
-        src={image} 
-        alt={`${title} Location`} 
-        className="w-full h-72 sm:h-80 lg:h-96 object-cover group-hover:scale-110 transition-transform duration-700 img-warm-filter" 
+    <div className="relative overflow-hidden rounded-2xl shadow-warm hover:shadow-warm-lg transition-all duration-500 transform hover:scale-[1.03] hover-glow h-72 sm:h-80 lg:h-96">
+      <Image
+        src={image}
+        alt={`${title} Location`}
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        className="object-cover group-hover:scale-110 transition-transform duration-700 img-warm-filter"
       />
-      <div className="absolute inset-0 gradient-warm flex items-end justify-center pb-8">
+      <div className="absolute inset-0 gradient-warm flex items-end justify-center pb-8 z-10">
         <h3 className="text-3xl sm:text-4xl lg:text-5xl font-light text-white drop-shadow-lg group-hover:scale-105 transition-transform duration-300 text-shadow-warm">
           {title}
         </h3>
       </div>
       {/* Floating accent element */}
-      <div className="absolute top-6 right-6 w-3 h-3 bg-white/30 rounded-full animate-float"></div>
+      <div className="absolute top-6 right-6 w-3 h-3 bg-white/30 rounded-full animate-float z-10"></div>
     </div>
   </Link>
 );
@@ -144,18 +147,21 @@ export default function Home() {
       <section className="h-[70vh] flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           {images.map((image, index) => (
-            <img
+            <Image
               key={image}
               src={image}
               alt="Outdoor Café Patio Ambiance"
-              className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ${
+              fill
+              priority
+              sizes="100vw"
+              quality={85}
+              className={`object-cover transition-opacity duration-1000 ${
                 index === currentImage ? 'opacity-100' : 'opacity-0'
               }`}
-              loading="eager"
             />
           ))}
           {/* Dark overlay */}
-          <div className="absolute inset-0 bg-warm-dark/70"></div>
+          <div className="absolute inset-0 bg-warm-dark/70 z-10"></div>
         </div>
         
         {/* Floating background elements */}
@@ -166,11 +172,14 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 sm:px-8 text-center relative z-10">
           <div className="animate-gentle">
             {/* Logo */}
-            <div className="mb-8">
-              <img 
-                src="/Logo-Flat.png" 
-                alt="Outdoor Café Logo" 
-                className="h-16 sm:h-20 md:h-24 mx-auto drop-shadow-lg"
+            <div className="mb-8 relative h-16 sm:h-20 md:h-24">
+              <Image
+                src="/Logo-Flat.png"
+                alt="Outdoor Café Logo"
+                width={200}
+                height={96}
+                priority
+                className="mx-auto drop-shadow-lg h-full w-auto"
               />
             </div>
             
@@ -322,11 +331,13 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
               <div className="flex justify-center">
                 <div className="relative transform rotate-2">
-                  <div className="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-warm-lg hover-lift">
-                    <img
+                  <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-warm-lg hover-lift">
+                    <Image
                       src="/shared.png"
                       alt="Good times at the cafe"
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110 img-warm-filter"
+                      fill
+                      sizes="(max-width: 640px) 288px, (max-width: 1024px) 320px, 384px"
+                      className="object-cover transition-transform duration-500 hover:scale-110 img-warm-filter"
                     />
                   </div>
                 </div>
