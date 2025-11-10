@@ -109,16 +109,16 @@ export default function MenuPage() {
             <p className="text-gray-600 mb-6 sm:mb-8">Choose your location to place an order for pickup or delivery</p>
             
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center max-w-md mx-auto">
-              <a 
-                href="https://www.chowbus.com" 
+              <a
+                href="https://pos.chowbus.com/online-ordering/store/Outdoor-Cafe/20978"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-sage text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-warm-dark transition-all duration-300 hover:scale-105 shadow-warm btn-warm"
               >
                 Order from North Park
               </a>
-              <a 
-                href="https://www.chowbus.com" 
+              <a
+                href="https://pos.chowbus.com/online-ordering/store/Outdoor-Cafe-Evanston/22091"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-accent text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-warm-dark transition-all duration-300 hover:scale-105 shadow-warm btn-warm"
