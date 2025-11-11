@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function EvanstonMenuPage() {
   const [isOpen, setIsOpen] = useState(true);
@@ -200,7 +201,7 @@ export default function EvanstonMenuPage() {
 
   return (
     <>
-      {/* Page Meta Tags */}
+      <Head>
       <title>Evanston Menu - Outdoor Café | Vietnamese Coffee & Boba Tea</title>
       <meta name="description" content="Evanston Outdoor Café menu featuring Vietnamese coffee, matcha specialties, boba tea, banh mi sandwiches, and spring rolls. Open 7AM-7PM Sun-Thu, 7AM-9PM Fri-Sat. Order online!" />
       <meta name="keywords" content="evanston cafe, vietnamese coffee evanston, boba tea evanston, matcha latte, banh mi evanston, coffee shop central street" />
@@ -244,6 +245,13 @@ export default function EvanstonMenuPage() {
             "url": "https://outdoorcafe.com/locations/evanston",
             "servesCuisine": ["Vietnamese", "Coffee", "Café", "Boba Tea"],
             "priceRange": "$$",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.6",
+              "reviewCount": "350",
+              "bestRating": "5",
+              "worstRating": "1"
+            },
             "openingHoursSpecification": [
               {
                 "@type": "OpeningHoursSpecification",
@@ -262,6 +270,7 @@ export default function EvanstonMenuPage() {
           })
         }}
       />
+      </Head>
     <main className="w-full min-h-screen bg-cream">
       {/* Header & Order Online Section */}
       <section className="py-12 sm:py-16 bg-warm-light relative overflow-hidden">

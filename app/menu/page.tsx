@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Head from "next/head";
+import Image from "next/image";
 
 type MenuItem = {
   name: string;
@@ -46,6 +48,98 @@ export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState<keyof MenuItems>("coffee");
 
   return (
+    <>
+      <Head>
+        <title>Menu - Outdoor Café | Vietnamese Coffee, Boba Tea, Banh Mi & More</title>
+        <meta name="description" content="Explore Outdoor Café's authentic Vietnamese menu featuring traditional Cà Phê Sữa Đá, specialty matcha drinks, signature boba tea, fresh banh mi sandwiches, and artisan smoothies. Order online for pickup or delivery from our Chicago North Park and Evanston locations." />
+        <meta name="keywords" content="vietnamese coffee menu, boba tea chicago, banh mi sandwich, matcha latte, milk tea with boba, vietnamese iced coffee, authentic vietnamese cafe menu, outdoor cafe menu, taro latte, brown sugar milk tea, chicago vietnamese food" />
+        <link rel="canonical" href="https://outdoorcafe.com/menu" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://outdoorcafe.com/menu" />
+        <meta property="og:title" content="Menu - Outdoor Café | Vietnamese Coffee & Boba Tea" />
+        <meta property="og:description" content="Authentic Vietnamese coffee, signature boba tea, fresh banh mi sandwiches, and specialty matcha drinks. Order online from our Chicago and Evanston locations." />
+        <meta property="og:image" content="https://outdoorcafe.com/espresso.jpg" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Menu - Outdoor Café | Vietnamese Coffee & Boba Tea" />
+        <meta name="twitter:description" content="Authentic Vietnamese coffee, signature boba tea, fresh banh mi, and specialty drinks." />
+
+        {/* Structured Data - Menu */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Menu",
+            "name": "Outdoor Café Menu",
+            "description": "Vietnamese coffee, boba tea, banh mi sandwiches, and specialty drinks",
+            "hasMenuSection": [
+              {
+                "@type": "MenuSection",
+                "name": "Coffee",
+                "description": "Authentic Vietnamese coffee and espresso drinks",
+                "hasMenuItem": menuItems.coffee.map(item => ({
+                  "@type": "MenuItem",
+                  "name": item.name,
+                  "description": item.desc,
+                  "offers": {
+                    "@type": "Offer",
+                    "price": item.price.replace('$', ''),
+                    "priceCurrency": "USD"
+                  }
+                }))
+              },
+              {
+                "@type": "MenuSection",
+                "name": "Boba Tea",
+                "description": "Signature milk tea with tapioca pearls and specialty drinks",
+                "hasMenuItem": menuItems.bobaTea.map(item => ({
+                  "@type": "MenuItem",
+                  "name": item.name,
+                  "description": item.desc,
+                  "offers": {
+                    "@type": "Offer",
+                    "price": item.price.replace('$', ''),
+                    "priceCurrency": "USD"
+                  }
+                }))
+              },
+              {
+                "@type": "MenuSection",
+                "name": "Smoothies & Milkshakes",
+                "description": "Fresh fruit smoothies, matcha blends, and creamy milkshakes",
+                "hasMenuItem": menuItems.smoothies.map(item => ({
+                  "@type": "MenuItem",
+                  "name": item.name,
+                  "description": item.desc,
+                  "offers": {
+                    "@type": "Offer",
+                    "price": item.price.replace('$', ''),
+                    "priceCurrency": "USD"
+                  }
+                }))
+              },
+              {
+                "@type": "MenuSection",
+                "name": "Banh Mi Sandwiches",
+                "description": "Authentic Vietnamese banh mi with fresh ingredients",
+                "hasMenuItem": menuItems.sandwiches.map(item => ({
+                  "@type": "MenuItem",
+                  "name": item.name,
+                  "description": item.desc,
+                  "offers": {
+                    "@type": "Offer",
+                    "price": item.price.replace('$', ''),
+                    "priceCurrency": "USD"
+                  }
+                }))
+              }
+            ]
+          })}
+        </script>
+      </Head>
+
     <main className="w-full min-h-screen bg-white">
       {/* Menu Section */}
       <section className="py-12 sm:py-16 md:py-20 bg-warm-solid">
@@ -84,11 +178,13 @@ export default function MenuPage() {
                 key={item.name}
                 className="bg-white rounded-lg p-4 sm:p-6 hover:shadow-lg transition-all duration-300 border border-gray-200 hover-lift"
               >
-                <div className="h-48 sm:h-56 md:h-64 bg-gray-100 rounded-lg mb-3 sm:mb-4 overflow-hidden">
-                  <img
+                <div className="h-48 sm:h-56 md:h-64 bg-gray-100 rounded-lg mb-3 sm:mb-4 overflow-hidden relative">
+                  <Image
                     src={item.img}
-                    alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    alt={`${item.name} - ${item.desc} at Outdoor Café`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-300 hover:scale-105"
                   />
                 </div>
                 <h4 className="text-lg sm:text-xl font-light text-gray-900 mb-1 sm:mb-2">{item.name}</h4>
@@ -136,5 +232,6 @@ export default function MenuPage() {
         </div>
       </section>
     </main>
+    </>
   );
 } 

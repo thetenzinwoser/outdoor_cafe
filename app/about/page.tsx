@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
 
 // Enhanced reusable components (matching the main page)
 const SectionHeading = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
@@ -61,35 +62,38 @@ export default function About() {
 
   return (
     <>
-      {/* Page Meta Tags */}
-      <title>About Us - Outdoor Café | Our Story & Vietnamese Coffee Tradition</title>
-      <meta name="description" content="Learn about Outdoor Café's story, our commitment to authentic Vietnamese coffee culture, and our two locations in Chicago North Park and Evanston serving the community since 2014." />
-      <meta name="keywords" content="about outdoor cafe, vietnamese coffee tradition, chicago cafe story, family owned cafe, authentic vietnamese coffee" />
-      <link rel="canonical" href="https://outdoorcafe.com/about" />
+      <Head>
+        <title>About Us - Outdoor Café | Our Story & Vietnamese Coffee Tradition</title>
+        <meta name="description" content="Learn about Outdoor Café's story, our commitment to authentic Vietnamese coffee culture, and our two locations in Chicago North Park and Evanston serving the community since 2014." />
+        <meta name="keywords" content="about outdoor cafe, vietnamese coffee tradition, chicago cafe story, family owned cafe, authentic vietnamese coffee" />
+        <link rel="canonical" href="https://outdoorcafe.com/about" />
 
-      {/* Open Graph */}
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://outdoorcafe.com/about" />
-      <meta property="og:title" content="About Outdoor Café - Our Story" />
-      <meta property="og:description" content="Learn about our Vietnamese coffee tradition and commitment to quality at our Chicago and Evanston locations." />
-      <meta property="og:image" content="https://outdoorcafe.com/espresso.jpg" />
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://outdoorcafe.com/about" />
+        <meta property="og:title" content="About Outdoor Café - Our Story" />
+        <meta property="og:description" content="Learn about our Vietnamese coffee tradition and commitment to quality at our Chicago and Evanston locations." />
+        <meta property="og:image" content="https://outdoorcafe.com/espresso.jpg" />
 
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="About Outdoor Café - Our Story" />
-      <meta name="twitter:description" content="Vietnamese coffee tradition and quality at our Chicago and Evanston locations." />
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Outdoor Café - Our Story" />
+        <meta name="twitter:description" content="Vietnamese coffee tradition and quality at our Chicago and Evanston locations." />
+      </Head>
 
     <main className="w-full min-h-screen bg-cream">
       {/* Hero Section */}
       <section className="min-h-[60vh] flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/espresso.jpg" 
-            alt="Our Story - Coffee Culture" 
-            className="w-full h-full object-cover img-warm-filter"
-            loading="eager"
+          <Image
+            src="/espresso.jpg"
+            alt="Vietnamese Coffee Preparation - Traditional Drip Coffee at Outdoor Café"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover img-warm-filter"
           />
-          <div className="absolute inset-0 gradient-warm"></div>
+          <div className="absolute inset-0 gradient-warm z-10"></div>
         </div>
         
         {/* Floating background elements */}

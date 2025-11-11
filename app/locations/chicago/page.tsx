@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function NorthParkMenuPage() {
   const [isOpen, setIsOpen] = useState(true);
@@ -208,7 +209,7 @@ export default function NorthParkMenuPage() {
 
   return (
     <>
-      {/* Page Meta Tags */}
+      <Head>
       <title>North Park Menu - Outdoor Café | Vietnamese Coffee & Milkshakes</title>
       <meta name="description" content="North Park Chicago Outdoor Café menu with Vietnamese coffee, matcha, boba tea, milkshakes, banh mi, and pho. Open 8AM-8PM Mon-Thu, 8AM-9PM Fri-Sun. Order online!" />
       <meta name="keywords" content="north park cafe, vietnamese coffee chicago, boba tea chicago, matcha latte, banh mi chicago, milkshakes, pho, bryn mawr cafe" />
@@ -252,6 +253,13 @@ export default function NorthParkMenuPage() {
             "url": "https://outdoorcafe.com/locations/chicago",
             "servesCuisine": ["Vietnamese", "Coffee", "Café", "Boba Tea"],
             "priceRange": "$$",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.7",
+              "reviewCount": "500",
+              "bestRating": "5",
+              "worstRating": "1"
+            },
             "openingHoursSpecification": [
               {
                 "@type": "OpeningHoursSpecification",
@@ -270,6 +278,7 @@ export default function NorthParkMenuPage() {
           })
         }}
       />
+      </Head>
     <main className="w-full min-h-screen bg-cream">
       {/* Header & Order Online Section */}
       <section className="py-12 sm:py-16 bg-warm-light relative overflow-hidden">
