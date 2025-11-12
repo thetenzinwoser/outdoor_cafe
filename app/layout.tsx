@@ -77,7 +77,7 @@ function Navbar() {
           <div
             ref={panelRef}
             tabIndex={-1}
-            className="absolute top-0 left-0 h-full w-[85%] max-w-sm bg-white shadow-2xl outline-none transform transition-transform duration-300 ease-out translate-x-[-100%] will-change-transform"
+            className="absolute top-0 left-0 h-full w-[75%] max-w-xs sm:w-[70%] sm:max-w-sm bg-white shadow-2xl outline-none transform transition-transform duration-300 ease-out translate-x-[-100%] will-change-transform"
             onClick={(e) => e.stopPropagation()}
             // Trigger slide-in on mount via CSS trick
             style={{ transform: 'translateX(0%)' }}

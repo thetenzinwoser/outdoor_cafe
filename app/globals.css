@@ -338,6 +338,26 @@ html, body {
   overflow-x: hidden;
 }
 
+/* Prevent iOS zoom on form inputs */
+@media (max-width: 640px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  input[type="password"],
+  input[type="url"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Disable decorative animations on mobile to save battery */
+  .animate-float {
+    animation: none !important;
+  }
+}
+
 /* Enhanced backdrop blur */
 .backdrop-blur-enhanced {
   backdrop-filter: blur(15px);

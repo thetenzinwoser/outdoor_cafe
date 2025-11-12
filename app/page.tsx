@@ -144,7 +144,7 @@ export default function Home() {
   return (
     <main className="w-full min-h-screen bg-cream">
       {/* Hero Section */}
-      <section className="h-[70vh] flex items-center justify-center relative overflow-hidden">
+      <section className="min-h-screen sm:min-h-[70vh] flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           {images.map((image, index) => (
             <Image

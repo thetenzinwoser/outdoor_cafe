@@ -121,7 +121,7 @@ export default function Contact() {
 
     <main className="w-full min-h-screen bg-cream">
       {/* Hero Section */}
-      <section className="min-h-[60vh] flex items-center justify-center relative overflow-hidden">
+      <section className="min-h-screen sm:min-h-[60vh] flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/shared.png"
@@ -184,7 +184,7 @@ export default function Contact() {
                     id="firstName"
                     name="firstName"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-sage transition-colors bg-white text-gray-900"
+                    className="w-full px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-sage transition-colors bg-white text-gray-900"
                   />
                 </div>
                 
@@ -197,7 +197,7 @@ export default function Contact() {
                     id="lastName"
                     name="lastName"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-sage transition-colors bg-white text-gray-900"
+                    className="w-full px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-sage transition-colors bg-white text-gray-900"
                   />
                 </div>
               </div>
@@ -211,7 +211,7 @@ export default function Contact() {
                   id="email"
                   name="email"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-sage transition-colors bg-white text-gray-900"
+                  className="w-full px-4 py-3 min-h-[44px] border border-gray-300 rounded-lg focus:ring-2 focus:ring-sage focus:border-sage transition-colors bg-white text-gray-900"
                 />
               </div>
               
@@ -232,7 +232,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={formStatus === 'submitting'}
-                  className="w-full sm:w-auto px-12 py-4 bg-red-500 hover:bg-red-600 text-white font-medium text-lg !rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full sm:w-auto px-12 py-4 min-h-[48px] bg-red-500 hover:bg-red-600 text-white font-medium text-lg !rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {formStatus === 'submitting' ? 'Sending...' : 'Send'}
                 </button>
