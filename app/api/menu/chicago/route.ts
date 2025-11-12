@@ -6,8 +6,7 @@ export async function GET() {
     address: "3257 W Bryn Mawr Ave, Chicago, IL 60659",
     phone: "+17735396078",
     hours: {
-      "Monday-Thursday": "8:00 AM - 8:00 PM",
-      "Friday-Sunday": "8:00 AM - 9:00 PM"
+      "Every day": "8:00 AM - 9:00 PM"
     },
     menu: [
       {

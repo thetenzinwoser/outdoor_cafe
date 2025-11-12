@@ -102,7 +102,7 @@ export default function Contact() {
     <>
       <Head>
         <title>Contact Us - Outdoor Café | Hours, Locations & Phone Numbers</title>
-        <meta name="description" content="Contact Outdoor Café. North Park Chicago: (773) 539-6078, Mon-Thu 8AM-8PM, Fri-Sun 8AM-9PM. Evanston: (847) 425-0022, Sun-Thu 7AM-7PM, Fri-Sat 7AM-9PM. Order online!" />
+        <meta name="description" content="Contact Outdoor Café. North Park Chicago: (773) 539-6078, Every day 8AM-9PM. Evanston: (847) 425-0022, Sun-Thu 7AM-7PM, Fri-Sat 7AM-9PM. Order online!" />
         <meta name="keywords" content="contact outdoor cafe, cafe hours, chicago cafe phone, evanston cafe contact, coffee shop hours, order online" />
         <link rel="canonical" href="https://outdoorcafe.com/contact" />
 

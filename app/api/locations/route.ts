@@ -16,8 +16,7 @@ export async function GET() {
         phone: "+17735396078",
         phoneDisplay: "(773) 539-6078",
         hours: {
-          "Monday-Thursday": "8:00 AM - 8:00 PM",
-          "Friday-Sunday": "8:00 AM - 9:00 PM"
+          "Every day": "8:00 AM - 9:00 PM"
         },
         features: [
           "Dine-in", "Takeout", "Online Ordering", "WiFi",

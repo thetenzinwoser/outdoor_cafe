@@ -14,11 +14,8 @@ export default function NorthParkMenuPage() {
       const day = cstTime.getDay();
       const hour = cstTime.getHours();
 
-      if (day >= 1 && day <= 4) {
-        setIsOpen(hour >= 8 && hour < 20);
-      } else {
-        setIsOpen(hour >= 8 && hour < 21);
-      }
+      // Open 8 AM - 9 PM every day
+      setIsOpen(hour >= 8 && hour < 21);
     };
 
     checkIfOpen();
@@ -211,7 +208,7 @@ export default function NorthParkMenuPage() {
     <>
       <Head>
       <title>North Park Menu - Outdoor Café | Vietnamese Coffee & Milkshakes</title>
-      <meta name="description" content="North Park Chicago Outdoor Café menu with Vietnamese coffee, matcha, boba tea, milkshakes, banh mi, and pho. Open 8AM-8PM Mon-Thu, 8AM-9PM Fri-Sun. Order online!" />
+      <meta name="description" content="North Park Chicago Outdoor Café menu with Vietnamese coffee, matcha, boba tea, milkshakes, banh mi, and pho. Open 8AM-9PM every day. Order online!" />
       <meta name="keywords" content="north park cafe, vietnamese coffee chicago, boba tea chicago, matcha latte, banh mi chicago, milkshakes, pho, bryn mawr cafe" />
       <link rel="canonical" href="https://outdoorcafe.com/locations/chicago" />
 
@@ -263,13 +260,7 @@ export default function NorthParkMenuPage() {
             "openingHoursSpecification": [
               {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
-                "opens": "08:00",
-                "closes": "20:00"
-              },
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Friday", "Saturday", "Sunday"],
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
                 "opens": "08:00",
                 "closes": "21:00"
               }
@@ -311,7 +302,7 @@ export default function NorthParkMenuPage() {
                   Currently {isOpen ? 'Open' : 'Closed'}
                 </span>
                 <span>•</span>
-                <span>Mon-Thu: 8AM-8PM • Fri-Sun: 8AM-9PM</span>
+                <span>Every day: 8AM-9PM</span>
               </div>
               <div className="pt-2">
                 <a

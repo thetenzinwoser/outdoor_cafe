@@ -392,7 +392,7 @@ export default function Home() {
                   <div className="space-y-3 text-gray-700">
                     <p className="text-lg sm:text-xl font-medium">3257 W Bryn Mawr Ave</p>
                     <p className="text-base sm:text-lg">Chicago, IL 60659</p>
-                    <p className="text-base sm:text-lg font-medium text-accent-solid">Mon-Thu: 8AM-8PM<br />Fri-Sun: 8AM-9PM</p>
+                    <p className="text-base sm:text-lg font-medium text-accent-solid">Every day: 8AM-9PM</p>
                   </div>
                   <div className="mt-6 pt-4 border-t border-sage/20">
                     <p className="text-accent-solid font-medium group-hover:text-warm-dark transition-colors">
