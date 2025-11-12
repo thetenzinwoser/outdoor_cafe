@@ -63,8 +63,8 @@ export default function NotFound() {
               We couldn't find the page you're looking for. But don't worry – our café is always open and ready to serve you!
             </p>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12">
+            {/* Action Button */}
+            <div className="flex justify-center items-center mb-12">
               <Link
                 href="/"
                 className="inline-block px-8 sm:px-10 py-4 sm:py-5 font-medium text-base sm:text-lg
@@ -72,14 +72,6 @@ export default function NotFound() {
                   bg-sage text-white hover:bg-warm-dark shadow-warm"
               >
                 Go Home
-              </Link>
-              <Link
-                href="/menu"
-                className="inline-block px-8 sm:px-10 py-4 sm:py-5 font-medium text-base sm:text-lg
-                  transition-all duration-300 hover:scale-105 btn-warm hover-glow rounded-full
-                  border-2 border-sage text-sage hover:bg-sage hover:text-white shadow-warm"
-              >
-                View Menu
               </Link>
             </div>
 
