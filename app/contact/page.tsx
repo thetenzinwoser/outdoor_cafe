@@ -285,8 +285,8 @@ export default function Contact() {
                   </div>
                 </div>
                 
-                <a 
-                  href="https://maps.google.com/maps?q=3257+W+Bryn+Mawr+Ave,+Chicago,+IL+60659"
+                <a
+                  href="https://www.google.com/maps/place/outdoor+cafe+north+park/data=!4m2!3m1!1s0x880fce0eed63124d:0x6c842134eef7872f?sa=X&ved=1t:242&ictx=111"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block px-6 py-3 border-2 border-sage text-sage hover:bg-sage hover:text-white transition-all duration-300 !rounded-full font-medium"
@@ -328,7 +328,7 @@ export default function Contact() {
                 </div>
                 
                 <a
-                  href="https://maps.google.com/maps?q=2012+Central+St,+Evanston,+IL+60201"
+                  href="https://www.google.com/maps/place/Outdoor+Cafe+Evanston/@42.064056,-87.7015144,20.3z/data=!4m6!3m5!1s0x880fc50067d51eb1:0xaa75178daaec4088!8m2!3d42.0641884!4d-87.7015385!16s%2Fg%2F11xmh2cff6?entry=ttu&g_ep=EgoyMDI1MTEwOS4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block px-6 py-3 border-2 border-sage text-sage hover:bg-sage hover:text-white transition-all duration-300 !rounded-full font-medium"
