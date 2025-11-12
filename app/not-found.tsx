@@ -55,13 +55,9 @@ export default function NotFound() {
             </h1>
             <div className="w-24 h-1 bg-accent-solid mx-auto rounded-full mb-6 sm:mb-8"></div>
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-6 sm:mb-8 text-balance">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-10 sm:mb-12 text-balance">
               Oops! This page took a coffee break
             </h2>
-
-            <p className="text-lg sm:text-xl text-gray-700 mb-10 sm:mb-12 max-w-xl mx-auto leading-relaxed text-balance">
-              We couldn't find the page you're looking for. But don't worry – our café is always open and ready to serve you!
-            </p>
 
             {/* Action Button */}
             <div className="flex justify-center items-center mb-12">
