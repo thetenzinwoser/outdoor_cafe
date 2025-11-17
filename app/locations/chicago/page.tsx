@@ -25,6 +25,17 @@ export default function NorthParkMenuPage() {
 
   const menuSections = [
     {
+      id: "seasonal-drinks",
+      title: "Seasonal Drinks",
+      items: [
+        "Pumpkin Chai Latte",
+        "Peppermint Mocha Latte",
+        "White Chocolate Mocha",
+        "Mint Mocha",
+        "Nutcracker Mocha"
+      ]
+    },
+    {
       id: "coffee-more",
       title: "Coffee and More",
       items: [
@@ -332,34 +343,84 @@ export default function NorthParkMenuPage() {
             <div className="w-16 h-1 bg-sage mx-auto rounded-full mt-4"></div>
           </div>
           <div className="text-center space-y-12">
-            {menuSections.map((section) => (
-              <div key={section.id} className="space-y-4">
-                {/* Category Header */}
-                <div>
-                  <h3 className="text-base font-semibold text-gray-900">
-                    {section.title}
-                  </h3>
-                  <div className="w-16 h-0.5 bg-sage mx-auto rounded-full mt-2"></div>
-                </div>
+            {menuSections.map((section) => {
+              // Special rendering for seasonal drinks
+              if (section.id === "seasonal-drinks") {
+                return (
+                  <div key={section.id}>
+                    {/* Chalkboard Sign */}
+                    <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl px-8 py-8 space-y-5 shadow-2xl border-8 border-[#D4A574]" style={{fontFamily: 'Quicksand, sans-serif'}}>
+                      {/* Snow dots decoration */}
+                      <div className="absolute top-3 left-4 w-2 h-2 bg-white/80 rounded-full"></div>
+                      <div className="absolute top-6 right-8 w-1.5 h-1.5 bg-white/70 rounded-full"></div>
+                      <div className="absolute bottom-4 left-12 w-1.5 h-1.5 bg-white/60 rounded-full"></div>
+                      <div className="absolute bottom-8 right-6 w-2 h-2 bg-white/75 rounded-full"></div>
+                      <div className="absolute top-12 left-20 w-1 h-1 bg-white/50 rounded-full"></div>
+                      <div className="absolute top-16 right-16 w-1 h-1 bg-white/50 rounded-full"></div>
 
-                {/* Menu Items - Pipe Separated */}
-                <p className="text-gray-800 text-base leading-relaxed">
-                  {section.items.map((item, index) => (
-                    <span key={index}>
-                      {item}
-                      {index < section.items.length - 1 && ' | '}
-                    </span>
-                  ))}
-                </p>
+                      {/* Snowflake decorations */}
+                      <div className="absolute top-4 right-4 text-blue-300/60 text-lg">❄️</div>
+                      <div className="absolute bottom-5 left-5 text-blue-300/50 text-sm">❄️</div>
 
-                {/* Subsections if they exist */}
-                {section.subsections && section.subsections.map((subsection, subIndex) => (
-                  <p key={subIndex} className="text-gray-800 text-base leading-relaxed">
-                    {subsection.prefix} {subsection.items.join(' | ')}
+                      {/* Title */}
+                      <div className="text-center">
+                        <h3 className="text-2xl font-bold text-white tracking-wide mb-1" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.5)'}}>
+                          WINTER SPECIAL
+                        </h3>
+                        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto"></div>
+                      </div>
+
+                      {/* Menu items with decorative elements */}
+                      <div className="space-y-3 text-center">
+                        {section.items.map((item, index) => (
+                          <div key={index} className="flex items-center justify-center gap-3">
+                            <span className="text-blue-300/70 text-sm">❄️</span>
+                            <span className="text-white/95 text-lg font-medium tracking-wide" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.4)'}}>
+                              {item.toUpperCase()}
+                            </span>
+                            {index === 0 && <span className="text-orange-400/70 text-lg">🎃</span>}
+                            {index === 1 && <span className="text-red-400/70 text-lg">🍬</span>}
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Decorative coffee cup */}
+                      <div className="absolute bottom-3 right-3 text-2xl opacity-40">☕</div>
+                    </div>
+                  </div>
+                );
+              }
+
+              // Standard rendering for other sections
+              return (
+                <div key={section.id} className="space-y-4">
+                  {/* Category Header */}
+                  <div>
+                    <h3 className="text-base font-semibold text-gray-900">
+                      {section.title}
+                    </h3>
+                    <div className="w-16 h-0.5 bg-sage mx-auto rounded-full mt-2"></div>
+                  </div>
+
+                  {/* Menu Items - Pipe Separated */}
+                  <p className="text-gray-800 text-base leading-relaxed">
+                    {section.items.map((item, index) => (
+                      <span key={index}>
+                        {item}
+                        {index < section.items.length - 1 && ' | '}
+                      </span>
+                    ))}
                   </p>
-                ))}
-              </div>
-            ))}
+
+                  {/* Subsections if they exist */}
+                  {section.subsections && section.subsections.map((subsection, subIndex) => (
+                    <p key={subIndex} className="text-gray-800 text-base leading-relaxed">
+                      {subsection.prefix} {subsection.items.join(' | ')}
+                    </p>
+                  ))}
+                </div>
+              );
+            })}
 
             {/* Pastries Section */}
             <div className="space-y-4">
