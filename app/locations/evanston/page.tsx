@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import { trackExternalLink } from "@/lib/analytics";
 
 export default function EvanstonMenuPage() {
   const [isOpen, setIsOpen] = useState(true);
@@ -321,6 +322,7 @@ export default function EvanstonMenuPage() {
                   href="https://pos.chowbus.com/online-ordering/store/Outdoor-Cafe-Evanston/22091"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackExternalLink('Order Now - Evanston', 'Evanston Menu Page')}
                   className="
                     inline-block px-8 sm:px-10 py-4 sm:py-5 font-medium text-base sm:text-lg
                     transition-all duration-300 hover:scale-105 btn-warm hover-glow !rounded-full

@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import InstagramCarousel from "./components/InstagramCarousel";
+import { trackExternalLink } from "@/lib/analytics";
 
 // Enhanced reusable components
 const SectionHeading = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
@@ -192,24 +193,26 @@ export default function Home() {
               Cozy and comfortable, there's room for everyone at Outdoor Café
             </p>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-              <a 
+              <a
                 href="https://pos.chowbus.com/online-ordering/store/Outdoor-Cafe/20978"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackExternalLink('Order Now - North Park', 'Homepage')}
                 className="
-                  inline-block px-8 sm:px-10 py-4 sm:py-5 font-medium text-base sm:text-lg 
+                  inline-block px-8 sm:px-10 py-4 sm:py-5 font-medium text-base sm:text-lg
                   transition-all duration-300 hover:scale-105 btn-warm hover-glow !rounded-full
                   bg-white text-gray-900 hover:bg-gray-100 shadow-lg hover:shadow-xl
                 "
               >
                 Order from North Park
               </a>
-              <a 
+              <a
                 href="https://pos.chowbus.com/online-ordering/store/Outdoor-Cafe-Evanston/22091"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackExternalLink('Order Now - Evanston', 'Homepage')}
                 className="
-                  inline-block px-8 sm:px-10 py-4 sm:py-5 font-medium text-base sm:text-lg 
+                  inline-block px-8 sm:px-10 py-4 sm:py-5 font-medium text-base sm:text-lg
                   transition-all duration-300 hover:scale-105 btn-warm hover-glow !rounded-full
                   bg-white text-gray-900 hover:bg-gray-100 shadow-lg hover:shadow-xl
                 "
