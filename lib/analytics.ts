@@ -6,11 +6,12 @@ export const trackExternalLink = (buttonName: string, location: string) => {
   console.log('🎯 Order button clicked:', { buttonName, location });
 
   if (typeof window !== 'undefined' && (window as any).gtag) {
-    // Send event to GA4
-    (window as any).gtag('event', 'click', {
+    // Send event to GA4 with custom event name (not reserved 'click')
+    (window as any).gtag('event', 'order_button_click', {
+      button_name: buttonName,
+      page_location: location,
       event_category: 'order_button',
       event_label: buttonName,
-      location: location,
       // Add callback to ensure event is sent before navigation (not always needed, but helps)
       transport_type: 'beacon',
     });
