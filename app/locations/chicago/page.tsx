@@ -380,8 +380,6 @@ export default function NorthParkMenuPage() {
                             <span className="text-white/95 text-lg font-medium tracking-wide" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.4)'}}>
                               {item.toUpperCase()}
                             </span>
-                            {index === 0 && <span className="text-orange-400/70 text-lg">🎃</span>}
-                            {index === 1 && <span className="text-red-400/70 text-lg">🍬</span>}
                           </div>
                         ))}
                       </div>
