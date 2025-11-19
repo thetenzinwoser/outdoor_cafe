@@ -197,7 +197,7 @@ export default function Home() {
                 href="https://pos.chowbus.com/online-ordering/store/Outdoor-Cafe/20978"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackExternalLink('Order Now - North Park', 'Homepage')}
+                onClick={() => trackExternalLink('northpark', 'Homepage')}
                 className="
                   inline-block px-8 sm:px-10 py-4 sm:py-5 font-medium text-base sm:text-lg
                   transition-all duration-300 hover:scale-105 btn-warm hover-glow !rounded-full
@@ -210,7 +210,7 @@ export default function Home() {
                 href="https://pos.chowbus.com/online-ordering/store/Outdoor-Cafe-Evanston/22091"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackExternalLink('Order Now - Evanston', 'Homepage')}
+                onClick={() => trackExternalLink('evanston', 'Homepage')}
                 className="
                   inline-block px-8 sm:px-10 py-4 sm:py-5 font-medium text-base sm:text-lg
                   transition-all duration-300 hover:scale-105 btn-warm hover-glow !rounded-full

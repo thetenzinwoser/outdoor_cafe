@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outdoor Café - Monthly Web Support Proposal</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 0.75in;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      color: #2d3748;
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid #418B26;
+    }
+
+    .header h1 {
+      color: #418B26;
+      font-size: 28px;
+      margin: 0 0 0.5rem 0;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .header p {
+      color: #A67C52;
+      font-size: 14px;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .section {
+      margin-bottom: 1.75rem;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.25rem;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .service-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 0.5rem;
+      background: #f7fafc;
+      border-radius: 6px;
+      border-left: 3px solid #418B26;
+    }
+
+    .service-item::before {
+      content: "✓";
+      color: #418B26;
+      font-weight: bold;
+      margin-right: 0.5rem;
+      font-size: 16px;
+    }
+
+    .service-item span {
+      font-size: 14px;
+      color: #2d3748;
+    }
+
+    .wins-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.75rem 0;
+    }
+
+    .wins-list li {
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 0.5rem;
+      background: #edf7ed;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .wins-list li::before {
+      content: "•";
+      margin-right: 0.75rem;
+      font-size: 16px;
+      color: #418B26;
+      font-weight: bold;
+    }
+
+    .pricing-box {
+      background: linear-gradient(135deg, #418B26 0%, #2d6b1a 100%);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      margin: 1.5rem 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .pricing-box h2 {
+      margin: 0 0 0.5rem 0;
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .pricing-box .subtext {
+      font-size: 14px;
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    .pricing-box .value {
+      font-size: 13px;
+      opacity: 0.85;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .option-card {
+      padding: 1rem;
+      background: #f7fafc;
+      border-radius: 8px;
+      border: 2px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .option-card h4 {
+      margin: 0 0 0.5rem 0;
+      color: #418B26;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .option-card p {
+      margin: 0;
+      font-size: 13px;
+      color: #4a5568;
+      line-height: 1.4;
+    }
+
+    .option-card .price {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a202c;
+      margin: 0.5rem 0;
+    }
+
+    .flexibility {
+      background: #fff8f0;
+      border-left: 4px solid #A67C52;
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      margin-top: 1rem;
+    }
+
+    .flexibility h4 {
+      margin: 0 0 0.5rem 0;
+      color: #A67C52;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .flexibility ul {
+      margin: 0;
+      padding-left: 1.25rem;
+      font-size: 13px;
+      color: #2d3748;
+    }
+
+    .flexibility li {
+      margin-bottom: 0.25rem;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 2px solid #e2e8f0;
+      text-align: center;
+      font-size: 13px;
+      color: #718096;
+    }
+
+    .footer strong {
+      color: #2d3748;
+    }
+
+    .comparison {
+      background: #f0f9ff;
+      border-left: 4px solid #3b82f6;
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      margin-top: 1rem;
+    }
+
+    .comparison h4 {
+      margin: 0 0 0.75rem 0;
+      color: #1e40af;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 13px;
+    }
+
+    .comparison-header {
+      font-weight: 700;
+      color: #1e40af;
+      padding-bottom: 0.25rem;
+      border-bottom: 2px solid #bfdbfe;
+    }
+
+    .comparison-row {
+      display: contents;
+    }
+
+    .comparison-label {
+      color: #374151;
+      padding: 0.25rem 0;
+    }
+
+    .comparison-price {
+      color: #374151;
+      padding: 0.25rem 0;
+      font-weight: 600;
+    }
+
+    .comparison-you {
+      color: #418B26;
+      padding: 0.25rem 0;
+      font-weight: 700;
+    }
+
+    .comparison-sources {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid #bfdbfe;
+    }
+
+    .comparison-sources a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .comparison-sources a:hover {
+      text-decoration: underline;
+    }
+
+    @media print {
+      body {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .pricing-box {
+        break-inside: avoid;
+      }
+
+      .section {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Monthly Web Support</h1>
+    <p>Outdoor Café • theoutdoorcafe.com</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Services Included</div>
+    <div class="services-grid">
+      <div class="service-item">
+        <span>Priority bug fixes (24-hour response)</span>
+      </div>
+      <div class="service-item">
+        <span>Menu & content updates</span>
+      </div>
+      <div class="service-item">
+        <span>Seasonal campaigns & promotions</span>
+      </div>
+      <div class="service-item">
+        <span>Performance monitoring & optimization</span>
+      </div>
+      <div class="service-item">
+        <span>Analytics tracking & insights</span>
+      </div>
+      <div class="service-item">
+        <span>Monthly strategy check-in</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Recent Wins</div>
+    <ul class="wins-list">
+      <li><strong>Mobile optimization</strong> — Improved page load speeds by ~15% for better mobile experience</li>
+      <li><strong>Google Analytics order tracking</strong> — Now you can see which location gets more orders</li>
+      <li><strong>Winter Special seasonal section</strong> — Chalkboard-style design matching in-store signage</li>
+      <li><strong>SEO improvements</strong> — Better visibility in Google search for local customers</li>
+      <li><strong>Professional infrastructure</strong> — Fast hosting, automated deployments, uptime monitoring</li>
+    </ul>
+  </div>
+
+  <div class="pricing-box">
+    <h2>$350/month</h2>
+    <p class="subtext">Approximately 6 hours of dedicated development time</p>
+    <p class="value">~$58/hour vs. agency rates of $100-200/hour</p>
+  </div>
+
+  <div class="comparison">
+    <h4>Market Comparison: You're Getting a Great Deal</h4>
+    <div class="comparison-grid">
+      <div class="comparison-header">Service Provider</div>
+      <div class="comparison-header">Hourly Rate</div>
+      <div class="comparison-header">Monthly Cost</div>
+
+      <div class="comparison-row">
+        <div class="comparison-label">Freelance Web Developer</div>
+        <div class="comparison-price">$50-100/hr</div>
+        <div class="comparison-price">$300-600</div>
+      </div>
+
+      <div class="comparison-row">
+        <div class="comparison-label">Web Agency</div>
+        <div class="comparison-price">$100-200/hr</div>
+        <div class="comparison-price">$600-1,200</div>
+      </div>
+
+      <div class="comparison-row">
+        <div class="comparison-label">Restaurant Maintenance (Typical)</div>
+        <div class="comparison-price">—</div>
+        <div class="comparison-price">$300-500</div>
+      </div>
+
+      <div class="comparison-row">
+        <div class="comparison-label"><strong>This Proposal</strong></div>
+        <div class="comparison-you">$58/hr</div>
+        <div class="comparison-you">$350</div>
+      </div>
+    </div>
+    <div class="comparison-sources">
+      <strong>Sources:</strong>
+      <a href="https://www.highervisibility.com/website-design/learn/website-maintenance-cost/" target="_blank">Higher Visibility</a> •
+      <a href="https://www.restaurant-website-builder.com/restaurant-website-cost" target="_blank">Restaurant Website Builder</a> •
+      <a href="https://elementor.com/blog/website-maintenance-cost/" target="_blank">Elementor 2024 Study</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Flexible Payment Options</div>
+    <div class="options">
+      <div class="option-card">
+        <h4>Monthly</h4>
+        <div class="price">$350</div>
+        <p>Billed monthly, flexible scope</p>
+      </div>
+      <div class="option-card">
+        <h4>Quarterly</h4>
+        <div class="price">$300/mo</div>
+        <p>$900 every 3 months (save $150/year)</p>
+      </div>
+      <div class="option-card">
+        <h4>Rollover Hours</h4>
+        <div class="price">$300/mo</div>
+        <p>Unused hours bank up to 12 hours</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flexibility">
+    <h4>Built for Small Business Flexibility</h4>
+    <ul>
+      <li>Either of us can pause or adjust with 30 days notice</li>
+      <li>No long-term contract — month-to-month commitment</li>
+      <li>Slow months? We can skip or reduce scope as needed</li>
+      <li>Direct communication — no agency bureaucracy</li>
+      <li>Someone who already knows your brand and systems inside-out</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <p><strong>Next Steps:</strong> Let's discuss what works best for your café's needs and budget.</p>
+    <p>Proposal valid through December 2024 • Questions? Let's chat!</p>
+  </div>
+
+</body>
+</html>

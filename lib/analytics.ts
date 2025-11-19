@@ -1,21 +1,23 @@
 // Google Analytics tracking helpers
 
 // Track external link clicks (like ChowBus order buttons)
-export const trackExternalLink = (buttonName: string, location: string) => {
+// locationName should be 'northpark' or 'evanston'
+export const trackExternalLink = (locationName: 'northpark' | 'evanston', pageLocation: string) => {
+  const eventName = `order_button_click_${locationName}`;
+
   // Always log for debugging (helps verify tracking code works)
-  console.log('🎯 Order button clicked:', { buttonName, location });
+  console.log('🎯 Order button clicked:', { locationName, pageLocation, eventName });
 
   if (typeof window !== 'undefined' && (window as any).gtag) {
-    // Send event to GA4 with custom event name (not reserved 'click')
-    (window as any).gtag('event', 'order_button_click', {
-      button_name: buttonName,
-      page_location: location,
+    // Send event to GA4 with location-specific event name
+    (window as any).gtag('event', eventName, {
+      location_name: locationName,
+      page_location: pageLocation,
       event_category: 'order_button',
-      event_label: buttonName,
-      // Add callback to ensure event is sent before navigation (not always needed, but helps)
+      // Add callback to ensure event is sent before navigation
       transport_type: 'beacon',
     });
-    console.log('✅ Event sent to Google Analytics');
+    console.log('✅ Event sent to Google Analytics:', eventName);
   } else {
     console.warn('⚠️ Google Analytics not loaded - check NEXT_PUBLIC_GA_ID');
   }
