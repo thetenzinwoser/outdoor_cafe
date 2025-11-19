@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outdoor Café - Monthly Web Support Proposal</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 0.75in;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      color: #2d3748;
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0;
+      font-size: 14px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #2d3748;
+    }
+
+    .header h1 {
+      color: #2d3748;
+      font-size: 24px;
+      margin: 0 0 0.5rem 0;
+      font-weight: 700;
+    }
+
+    .header p {
+      color: #4a5568;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .section {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pricing {
+      text-align: center;
+      padding: 1.5rem;
+      background: #f7fafc;
+      border: 2px solid #2d3748;
+      margin: 1.5rem 0;
+    }
+
+    .pricing h2 {
+      margin: 0 0 0.5rem 0;
+      font-size: 36px;
+      font-weight: 700;
+      color: #2d3748;
+    }
+
+    .pricing p {
+      margin: 0.25rem 0;
+      color: #4a5568;
+      font-size: 14px;
+    }
+
+    .services {
+      margin-top: 0.75rem;
+    }
+
+    .services ul {
+      margin: 0;
+      padding-left: 1.25rem;
+      list-style-type: disc;
+    }
+
+    .services li {
+      margin-bottom: 0.5rem;
+      color: #2d3748;
+    }
+
+    .services li strong {
+      color: #1a202c;
+    }
+
+    .wins ul {
+      margin: 0.5rem 0;
+      padding-left: 1.25rem;
+      list-style-type: disc;
+    }
+
+    .wins li {
+      margin-bottom: 0.5rem;
+      color: #2d3748;
+    }
+
+    .wins li strong {
+      color: #1a202c;
+    }
+
+    .comparison {
+      margin-top: 0.75rem;
+      border: 1px solid #cbd5e0;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .comparison th,
+    .comparison td {
+      border: 1px solid #cbd5e0;
+      padding: 0.5rem;
+      text-align: left;
+    }
+
+    .comparison th {
+      background: #f7fafc;
+      font-weight: 700;
+      color: #1a202c;
+      font-size: 13px;
+    }
+
+    .comparison td {
+      font-size: 13px;
+      color: #2d3748;
+    }
+
+    .comparison .highlight {
+      background: #edf2f7;
+      font-weight: 700;
+    }
+
+    .comparison-sources {
+      font-size: 11px;
+      color: #718096;
+      margin-top: 0.5rem;
+    }
+
+    .comparison-sources a {
+      color: #2d3748;
+      text-decoration: underline;
+    }
+
+    .terms {
+      margin-top: 0.75rem;
+    }
+
+    .terms ul {
+      margin: 0;
+      padding-left: 1.25rem;
+      list-style-type: disc;
+    }
+
+    .terms li {
+      margin-bottom: 0.5rem;
+      color: #2d3748;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 2px solid #e2e8f0;
+      text-align: center;
+      font-size: 13px;
+      color: #718096;
+    }
+
+    .footer strong {
+      color: #2d3748;
+    }
+
+    @media print {
+      body {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Your Digital & Design Specialist</h1>
+    <p>Outdoor Café • theoutdoorcafe.com</p>
+  </div>
+
+  <div class="section">
+    <div class="pricing">
+      <h2>$350/month</h2>
+      <p>Approximately 6 hours of dedicated development time monthly</p>
+      <p>~$58/hour vs. typical agency rates of $100-200/hour</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Services Included</div>
+    <div class="services">
+      <ul>
+        <li><strong>Priority bug fixes</strong> — 24-hour response time for urgent issues</li>
+        <li><strong>Menu & content updates</strong> — Keep information current across both locations</li>
+        <li><strong>Seasonal campaigns & promotions</strong> — Design and implement special sections</li>
+        <li><strong>Performance monitoring & optimization</strong> — Ensure fast load times and uptime</li>
+        <li><strong>Analytics tracking & insights</strong> — Track orders, traffic, customer behavior</li>
+        <li><strong>Weekly strategy check-in</strong> — Review performance and plan improvements</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Market Comparison</div>
+    <table class="comparison">
+      <thead>
+        <tr>
+          <th>Service Provider</th>
+          <th>Hourly Rate</th>
+          <th>Monthly Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Freelance Web Developer</td>
+          <td>$50-100/hr</td>
+          <td>$300-600</td>
+        </tr>
+        <tr>
+          <td>Web Agency</td>
+          <td>$100-200/hr</td>
+          <td>$600-1,200</td>
+        </tr>
+        <tr>
+          <td>Restaurant Maintenance (Typical)</td>
+          <td>—</td>
+          <td>$300-500</td>
+        </tr>
+        <tr class="highlight">
+          <td><strong>This Proposal</strong></td>
+          <td><strong>$58/hr</strong></td>
+          <td><strong>$350</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="comparison-sources">
+      <strong>Sources:</strong>
+      <a href="https://www.highervisibility.com/website-design/learn/website-maintenance-cost/" target="_blank">Higher Visibility</a> •
+      <a href="https://www.restaurant-website-builder.com/restaurant-website-cost" target="_blank">Restaurant Website Builder</a> •
+      <a href="https://elementor.com/blog/website-maintenance-cost/" target="_blank">Elementor 2024 Study</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Terms of Service</div>
+    <div class="terms">
+      <ul>
+        <li>Either party can pause or adjust with 30 days notice</li>
+        <li>No long-term contract — month-to-month commitment</li>
+        <li>Slow months? We can skip or reduce scope as needed</li>
+        <li>Direct communication — no agency bureaucracy</li>
+        <li>Billing on the 1st of each month via invoice or auto-payment</li>
+        <li>Unused hours do not roll over (unless quarterly payment option selected)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Next Steps:</strong> Let's discuss what works best for your café's needs and budget.</p>
+    <p>Proposal valid through December 2024 • Questions? Let's chat!</p>
+  </div>
+
+</body>
+</html>

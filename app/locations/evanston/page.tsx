@@ -341,7 +341,7 @@ export default function EvanstonMenuPage() {
       {/* Menu Section */}
       <section className="py-12 sm:py-16 bg-cream">
         <div className="max-w-4xl mx-auto px-6 sm:px-8">
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-2xl sm:text-3xl font-light text-warm-dark">Menu</h2>
             <div className="w-16 h-1 bg-sage mx-auto rounded-full mt-4"></div>
           </div>
@@ -352,7 +352,7 @@ export default function EvanstonMenuPage() {
                 return (
                   <div key={section.id}>
                     {/* Chalkboard Sign */}
-                    <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl px-8 py-8 space-y-5 shadow-2xl border-8 border-[#D4A574]" style={{fontFamily: 'Quicksand, sans-serif'}}>
+                    <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl px-8 pt-4 pb-8 space-y-5 shadow-2xl border-8 border-[#D4A574]" style={{fontFamily: 'Quicksand, sans-serif'}}>
                       {/* Snow dots decoration */}
                       <div className="absolute top-3 left-4 w-2 h-2 bg-white/80 rounded-full"></div>
                       <div className="absolute top-6 right-8 w-1.5 h-1.5 bg-white/70 rounded-full"></div>
