@@ -384,9 +384,6 @@ export default function EvanstonMenuPage() {
                           </div>
                         ))}
                       </div>
-
-                      {/* Decorative coffee cup */}
-                      <div className="absolute bottom-3 right-3 text-2xl opacity-40">☕</div>
                     </div>
                   </div>
                 );
